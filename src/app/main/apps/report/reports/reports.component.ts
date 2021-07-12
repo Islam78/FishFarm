@@ -35,7 +35,7 @@ export class ReportsComponent implements OnInit {
   ChartType = 'line'
   ChangeChart(event) {
     console.log(event);
-    
+
     this.ChartType = event.value
   }
   GetData(DateFrom, DateTo) {
@@ -80,12 +80,14 @@ export class ReportsComponent implements OnInit {
           label: 'PH',
           data: this.PH_sensor,
           fill: false,
+          zoom: true,
           borderColor: '#4bc0c0'
         },
         {
           label: 'temperature',
           data: this.Temperature_sensor,
           fill: false,
+          zoom: true,
           borderColor: 'red'
         }
       ]
@@ -115,11 +117,15 @@ export class ReportsComponent implements OnInit {
             type: "linear",
             position: "right",
             gridLines: {
-              display: false
+              display: true
             },
             id: "id2"
           }
-        ]
+        ],
+        zoom: {
+          enabled: true,
+          drag: false,
+        }
       }
     };
   }

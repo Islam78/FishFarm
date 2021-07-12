@@ -43,14 +43,21 @@
                     </div>
                 </div>
             </div>
-            <!-- Apexchart component-->
-            <div id="gainedChartoptions">
-                <div id="chart">
-                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
-                        [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke"
-                        [title]="chartOptions.title"></apx-chart>
+            <ng-container *ngIf="isLoading; else elseTemplateUser">
+                <ngx-skeleton-loader  count="5" >
+                </ngx-skeleton-loader>
+            </ng-container>
+            <ng-template #elseTemplateUser>
+                <!-- Apexchart component-->
+                <div id="gainedChartoptions">
+                    <div id="chart">
+                        <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                            [xaxis]="chartOptions.xaxis" [dataLabels]="chartOptions.dataLabels"
+                            [grid]="chartOptions.grid" [stroke]="chartOptions.stroke" [title]="chartOptions.title">
+                        </apx-chart>
+                    </div>
                 </div>
-            </div>
+            </ng-template>
         </div>
     </div>
 
@@ -63,13 +70,16 @@
                     </div>
                 </div>
             </div>
-            <ng-container *ngIf="isLoading; else elseTemplateAdmin">
-                <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
-            </ng-container>
+            <div class="row mb-5" style="margin: 0 auto;">
+                <ng-container *ngIf="isLoading; else elseTemplateAdmin">
+                    <ngx-skeleton-loader appearance="circle" count="2" [theme]="{ width: '150px', height: '150px' }">
+                    </ngx-skeleton-loader>
+                </ng-container>
+            </div>
 
             <ng-template #elseTemplateAdmin>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <div class="card p-0">
                             <div id="goalChartoptions">
                                 <apx-chart #goalChartRef [chart]="goalChartoptions?.chart"
@@ -79,13 +89,13 @@
                             </div>
                             <div class="row text-center mx-0">
                                 <div class="col-12  py-1">
-                                    <p class="card-text text-muted mb-0">{{'Controle.admins'|translate}}
+                                    <p class="card-text text-muted mb-0">{{'Controle.users'|translate}}
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <div class="card p-0">
                             <div id="goalChartoptions">
                                 <apx-chart #goalChartRef [chart]="goalChartoptions?.chart"
@@ -117,4 +127,4 @@
 </div>
 <!--/ Congratulations Card -->
 
-<!--The content below is only a placeholder and can be replac
+<!--The content below is only a placeholder and can be replaced.-->

@@ -47,24 +47,22 @@ export class HomeComponent implements OnInit {
     this._coreMenuService.onMenuChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
       this.currentUser = this._coreMenuService.currentUser;
     })
-    this.GetDataUser()
-    this.GaidcartUser()
   }
   ngOnInit(): void {
     // this.ActiveRoute.params.subscribe(a => this.Farm_name = a.id);
     this._coreMenuService.onMenuChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(() => {
       this.currentUser = this._coreMenuService.currentUser;
     })
-    this.InitChartAdmin()
     setTimeout(() => {
-      this.GetDataUser()
-      this.GaidcartUser()
-      this.GetDataAdmin()
-
+      if (this.currentUser.usercode) {
+        this.GetDataUser()
+      } else if (this.currentUser.admin_code) {
+        this.GetDataAdmin()
+      }
     }, 700);
   }
   dataList: any[]
-  isLoading: boolean =true 
+  isLoading: boolean = true
   dateList: any[] = []
   PHList: any[] = []
   AdminDataHome
@@ -72,7 +70,7 @@ export class HomeComponent implements OnInit {
     this.http.get(`${environment.apiUrl}get/adminhome`).subscribe((res: any) => {
       console.log('admindata', res);
       this.AdminDataHome = res
-      this.isLoading = false
+      this.InitChartAdmin()
     })
 
   }
@@ -140,26 +138,21 @@ export class HomeComponent implements OnInit {
         }
       }
     };
+    setTimeout(() => {
+      this.isLoading = false
+    }, 200);
   }
   GetDataUser() {
-    let data = {
-      User_code: this.currentUser.usercode,
-      Farm_name: ['suze1'],
-      Start_Date: "2020-02-06",
-      End_Date: "2021-07-06"
-    }
-    this.http.post(`${environment.apiUrl}user/reports`, data).subscribe((res: any) => {
+    this.http.get(`${environment.apiUrl}get/userhome/suze1`).subscribe((res: any) => {
       if (res.result.length > 0) {
         this.dataList = res.result
-        this.isLoading = false
         this.dataList.map(a => {
           this.dateList.push(a.date)
           this.PHList.push(a.PH_sensor)
         })
-
+        this.GaidcartUser()
       }
     })
-
   }
   GaidcartUser() {
     this.chartOptions = {
@@ -173,11 +166,11 @@ export class HomeComponent implements OnInit {
         height: 350,
         type: "line",
         zoom: {
-          enabled: false
+          enabled: true
         }
       },
       dataLabels: {
-        enabled: false
+        enabled: true
       },
       stroke: {
         curve: "straight"
@@ -194,7 +187,16 @@ export class HomeComponent implements OnInit {
       },
       xaxis: {
         categories: [
-          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+          // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+          'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 
         ]
       }
     };
+    setTimeout(() => {
+      this.isLoading = false
+    }, 200);
+
+  }
+
+
+}

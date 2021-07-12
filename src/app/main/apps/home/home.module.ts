@@ -15,6 +15,7 @@ import {
   ApexTooltip,
   ApexStroke
 } from "ng-apexcharts";
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -32,7 +33,8 @@ export type ChartOptions = {
     CommonModule,
     HomeRoutingModule,
     NgApexchartsModule,
-    TranslateModule
+    TranslateModule,
+    NgxSkeletonLoaderModule
   ]
 })
 export class HomeModule { }
