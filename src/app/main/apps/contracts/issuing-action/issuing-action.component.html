@@ -1,0 +1,52 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-search [Show]="true" [SearchArr]="SearchArr" [SearchHeader]="SearchHeader" (click)="MakeSearchArr()"></app-search>
+        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{'contracts.IssuingAction' | translate}}</h4>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> {{'common.Name' | translate}}</th>
+                                    <th> {{'common.JobTybe' | translate}} </th>
+                                    <th> {{'common.EmployeeId' | translate}} </th>
+                                    <th> {{'contracts.Administration' | translate}} </th>
+                                    <th> {{'common.OfficeName' | translate}} </th>
+                                    <th> {{'common.Date' | translate}} </th>
+                                    <th> {{'common.Action' | translate}} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td> Developer </td>
+                                    <td>45118841</td>
+                                    <td>Test</td>
+                                    <td>Test</td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">1/2/2021</span></td>
+                                    <td class="overflow-hidden">
+                                        <button type="button" class="btn btn-danger" rippleEffect>{{'contracts.StartWork' |
+                                            translate}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+    </div>
+</div>

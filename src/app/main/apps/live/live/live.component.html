@@ -1,0 +1,53 @@
+<div class="content-wrapper">
+
+    <div class="content-body">
+        <section class="invoice-preview-wrapper">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">{{'User.Live' | translate}} - {{Farm_name}}</h4>
+                </div>
+                <div class="row invoice-preview">
+                    <!-- Invoice -->
+                    <div class="col-xl-9 col-md-8 col-12 printRef border-right border-top">
+                        <div class="card invoice-preview-card">
+                            <div *ngIf="Img">
+                                <img [src]="Img" alt="" style="
+                                width: 100%;
+                                height: 100%;
+                            ">
+                            </div>
+                            <div class="text-center mt-5" *ngIf="!Img">
+                                <h3 class="mt-5">This Farm Has No Live Camera</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Invoice -->
+                    <!-- Invoice Actions -->
+                    <div class="col-xl-3 col-md-4 col-12 invoice-actions mt-md-0 mt-2">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between order-md-2 order-1">
+                                    <span>Temperature </span>
+                                    <i class="pi pi-cloud" style="font-size: 2rem"></i>
+                                </div>
+                                <p> </p>
+                                <p-knob [max]="100" [(ngModel)]="LiveTemp" [strokeWidth]="7" [size]="100"
+                                    [readonly]="true" valueColor="{{LiveTemp >= 50 ? 'red' : 'SlateGray'}}">
+                                </p-knob>
+                                <hr>
+                                <div class="d-flex justify-content-between order-md-2 order-1">
+                                    <span>LivePh </span>
+                                    <i class="pi pi-heart" style="font-size: 2rem"></i>
+                                </div>
+                                <p-knob [max]="100" [(ngModel)]="LivePh" [strokeWidth]="7" [size]="100"
+                                    [readonly]="true" valueColor="{{LivePh >= 50 ? 'red' : 'SlateGray'}}">
+                                </p-knob>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Invoice Actions -->
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

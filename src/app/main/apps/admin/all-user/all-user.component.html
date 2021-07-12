@@ -1,0 +1,81 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <section id="sample-page">
+            <h4 class="card-title">
+                <span>{{'Controle.users' | translate}}</span>
+            </h4>
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex justify-content-between align-items-center m-1">
+                            <div class="form-group breadcrum-right">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex justify-content-start justify-content-md-end">
+                        <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pb-md-0">
+                            <button type="button" class="btn btn-relief-primary m-1 " (click)="onAdd()"
+                                rippleEffect>{{'common.Add'|translate}}</button>
+                        </div>
+                    </div>
+                </div>
+                <section class="invoice-list-wrapper">
+                    <div class="card">
+                        <ng-container *ngIf="isLoading; else elseTemplate">
+                            <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            <!--  List Table -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th> {{'common.id' | translate}}</th>
+                                            <th> {{'common.Name' | translate}}</th>
+                                            <th> {{'common.Email' | translate}}</th>
+                                            <th>{{'common.Phone' | translate}}</th>
+                                            <th>{{'common.save_time' | translate}}</th>
+                                            <th>{{'common.address' | translate}}</th>
+                                            <th>{{'common.Action' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngIf="dataList?.length>0">
+                                            <tr *ngFor="let item of dataList">
+                                                <td>
+                                                    <span class="font-weight-bold">{{item.User_code}}</span>
+                                                </td>
+                                                <td>{{item.Name}}</td>
+                                                <td>{{item.Email}}</td>
+                                                <td>{{item.phone}}</td>
+                                                <td>{{item.save_time}}</td>
+                                                <td>{{item.address}}</td>
+                                                <td>
+                                                    <button type="button" rippleEffect class="btn btn-sm"
+                                                        tooltipClass="fadeInAnimation" placement="top"
+                                                        (click)="onEdit(item)" ngbTooltip="{{'btn.Edit' | translate }}">
+                                                        <i class="far fa-edit text-success fa-2x"></i>
+                                                    </button>
+                                                    <button type="button" rippleEffect class="btn btn-sm"
+                                                        tooltipClass="fadeInAnimation" placement="top"
+                                                        (click)="onDelete(item.User_code)"
+                                                        ngbTooltip="{{'common.Delete' | translate }}">
+                                                        <i class="far fa-trash-alt text-danger fa-2x"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--/  List Table -->
+                            <ng-container *ngIf="!dataList?.length > 0">
+                                <app-no-data></app-no-data>
+                            </ng-container>
+                        </ng-template>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>

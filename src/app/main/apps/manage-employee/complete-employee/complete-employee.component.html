@@ -1,0 +1,251 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-search></app-search>
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> {{'ManageEmployee.Name'| translate}}</th>
+                                    <th> {{'common.OfficesName' | translate}}</th>
+                                    <th> {{'ManageEmployee.Date' | translate}}</th>
+                                    <th> {{'ManageEmployee.JobTybe' | translate}}</th>
+                                    <th> {{'ManageEmployee.Action' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td>
+                                        <button (click)="showEditModalDialog()" type="button" class="btn btn-primary"
+                                            rippleEffect>{{'ManageEmployee.CompleteData' | translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button (click)="showEditModalDialog()" type="button" class="btn btn-primary"
+                                            rippleEffect>{{'ManageEmployee.CompleteData' | translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button (click)="showEditModalDialog()" type="button" class="btn btn-primary"
+                                            rippleEffect>{{'ManageEmployee.CompleteData' | translate}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+        <!-- dialog -->
+        <p-dialog [(visible)]="editDisplayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="divider divider-Primary">
+                                        <div class="divider-text">{{'ManageEmployee.HealthInsuranceInformation' | translate}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-column"> {{'ManageEmployee.InsuranceNumber' | translate}} </label>
+                                        <input type="text" id="first-name-column" class="form-control"
+                                            name="fname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'ManageEmployee.StartDataPassport' | translate}}</label>
+                                        <input type="date" id="last-name-column" class="form-control"
+                                            name="lname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city-column">{{'ManageEmployee.EndDataPassport' | translate}}</label>
+                                        <input type="date" id="city-column" class="form-control" name="city-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">{{'ManageEmployee.CopyTheInsurance' | translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" ng2FileSelect
+                                                    id="file-upload-single" />
+                                                <label class="custom-file-label">{{'ManageEmployee.SelectFile'| translate}}</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="divider divider-Primary">
+                                        <div class="divider-text">{{'ManageEmployee.AccommodationInformation' | translate}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'ManageEmployee.ResidenceNumber' | translate}} </label>
+                                        <input type="number" id="company-column" class="form-control"
+                                            name="company-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column"> {{'ManageEmployee.DateIssuanceResidency' | translate}}</label>
+                                        <input type="date" id="email-id-column" class="form-control"
+                                            name="email-id-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column"> {{'ManageEmployee.ResidenceExpirationDate' | translate}}</label>
+                                        <input type="text" id="email-id-column" class="form-control"
+                                            name="email-id-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'ManageEmployee.ResidencePic' | translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" ng2FileSelect
+                                                    id="file-upload-single" />
+                                                <label class="custom-file-label">{{'ManageEmployee.SelectFile'| translate}}</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="divider divider-Primary">
+                                        <div class="divider-text">{{'ManageEmployee.ContactInformation' | translate}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'ManageEmployee.SaudiMobileNumber' |translate}}</label>
+                                        <input type="number" id="email-id-column" class="form-control"
+                                            name="email-id-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'ManageEmployee.Email'|translate}}</label>
+                                        <input type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'ManageEmployee.PhonenumberEmergency' | translate}}</label>
+                                        <input type="number" id="email-id-column" class="form-control"
+                                            name="email-id-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'ManageEmployee.DateEnteringKingdom' | translate}}</label>
+                                        <input type="date" id="email-id-column" class="form-control"
+                                            name="email-id-column" />
+                                    </div>
+                                </div>
+                               
+                                <!-- <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'EntryPortKingdom' | translate}}</label>
+                                        <input type="number" id="email-id-column" class="form-control"
+                                            name="email-id-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'selfiPic' | translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" ng2FileSelect
+                                                    id="file-upload-single" />
+                                                <label class="custom-file-label">{{'SelectFile'| translate}}</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'UploadCopyPassport' | translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" ng2FileSelect
+                                                    id="file-upload-single" />
+                                                <label class="custom-file-label">{{'SelectFile'| translate}}</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'JobNumber' | translate}}</label>
+                                        <input type="number" id="email-id-column" class="form-control"
+                                            name="email-id-column" />
+                                    </div>
+                                </div> -->
+                            </div>
+                        </form>
+                        <div class="d-flex">
+                            <div>
+                                <button type="button" (click)="this.editDisplayModal = false"
+                                    class="btn btn-gradient-danger mt-1 text-left">{{'btn.Cancel'|translate}}</button>
+                            </div>
+                            <div class="ml-auto">
+                                    <button type="button" (click)="UpdateEmployeeOffices()"
+                                    class="btn btn-gradient-success mt-1">{{'btn.Save'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+</div>

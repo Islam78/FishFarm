@@ -1,0 +1,55 @@
+<form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel1">
+            {{ "btn.Edit" | translate }}
+        </h4>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-contol">
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="first-name-column">{{ "ManageEmployee.EmployeeName" | translate }}</label>
+                                <input type="text" id="first-name-column" class="form-control" name="name"
+                                    ngModel #name="ngModel" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="first-name-column">{{"adminOffices.OfficeName" | translate}}</label>
+                                <input type="text" id="first-name-column" class="form-control" name="office_name" ngModel
+                                    #name="ngModel" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="ResidenceNumber">{{
+                                    "ManageEmployee.ResidenceNumber" | translate
+                                    }}</label>
+                                <input type="number" id="ResidenceNumber" class="form-control" name="ResidenceNumber"
+                                    ngModel #name="ngModel" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="d-flex justify-content-between w-100">
+            <button type="submit" class="btn btn-gradient-success btn-sm">
+                <i class="fas fa-search"></i>
+                {{ "common.Search" | translate }}
+            </button>
+            <button type="button" class="btn btn-gradient-danger btn-sm">
+                <i class="fas fa-window-close"></i>
+                {{ "btn.Cancel" | translate }}
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,50 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <section id="sample-page">
+            <h4 class="card-title">{{'Controle.AddFarmsBool' | translate}}</h4>
+            <div class="card">
+                <section class="invoice-list-wrapper">
+                    <div class="card">
+                        <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+                            <div class="modal-body" tabindex="0" ngbAutofocus>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-contol">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label
+                                                            for="first-name-column">{{'Controle.usercode'|translate}}</label>
+                                                        <input type="text" id="usercode" class="form-control"
+                                                            name="usercode" ngModel #usercode="ngModel" />
+                                                    </div>
+                                                </div>
+                                                <!-- car_number -->
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="model">{{'Controle.Farm_name' | translate}}</label>
+                                                        <input type="text" id="Farm_name" class="form-control"
+                                                            name="Farm_name" ngModel #Farm_name="ngModel" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="d-flex justify-content-between w-100">
+                                    <div></div>
+                                    <button type="submit" class="btn btn-gradient-success">
+                                        <i class="fas fa-plus"></i>
+                                        {{ "common.Add" | translate }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>

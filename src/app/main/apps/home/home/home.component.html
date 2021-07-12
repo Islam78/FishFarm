@@ -1,0 +1,120 @@
+<!-- Card Advance -->
+<div class="row match-height">
+    <!-- Congratulations Card -->
+    <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="card card-congratulations">
+            <div class="card-body text-center">
+                <img src="./../../../../../assets/images/elements/decore-left.png" class="congratulations-img-left"
+                    alt="card-img-left" />
+                <img src="./../../../../../assets/images/elements/decore-right.png" class="congratulations-img-right"
+                    alt="card-img-right" />
+                <div class="avatar avatar-xl bg-primary shadow">
+                    <div class="avatar-content">
+                        <i data-feather="award" class="font-large-1"></i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <!-- user -->
+                    <h1 class="mb-1 text-white" *ngIf="!currentUser.usercode">{{'common.Congratulations'|translate}},
+                        {{currentUser?.Name}}
+                    </h1>
+                    <p class="card-text m-auto w-75" *ngIf="!currentUser.usercode">{{'common.pageAccessed'|translate}}
+                        <strong>{{'common.byAdministrators'|translate}}</strong>
+                    </p>
+                    <!-- admin -->
+                    <h1 class="mb-1 text-white" *ngIf="currentUser.usercode">{{'common.Welcom'|translate}}, {{
+                        currentUser?.Name }}
+                    </h1>
+                    <p class="card-text m-auto w-75" *ngIf="currentUser.usercode">
+                        {{'common.HereYouCanAccessTo'|translate}}
+                        <strong>{{'common.YourFishFarm'|translate}}</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6 col-12" *ngIf="currentUser.usercode">
+        <div class="card">
+            <div class="card-header d-flex pb-0">
+                <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">{{'Controle.users'|translate}}
+                        <i data-feather="users" class="font-medium-5"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- Apexchart component-->
+            <div id="gainedChartoptions">
+                <div id="chart">
+                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+                        [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke"
+                        [title]="chartOptions.title"></apx-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6 col-12" *ngIf="currentUser.admin_code">
+        <div class="card">
+            <div class="card-header d-flex pb-0">
+                <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">{{'Controle.admins'|translate}}
+                        <i data-feather="users" class="font-medium-5"></i>
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="isLoading; else elseTemplateAdmin">
+                <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+            </ng-container>
+
+            <ng-template #elseTemplateAdmin>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card p-0">
+                            <div id="goalChartoptions">
+                                <apx-chart #goalChartRef [chart]="goalChartoptions?.chart"
+                                    [series]="[AdminDataHome.num_users]" [colors]="goalChartoptions?.colors"
+                                    [plotOptions]="goalChartoptions?.plotOptions" [fill]="goalChartoptions?.fill"
+                                    [stroke]="goalChartoptions?.stroke" [grid]="goalChartoptions.grid"></apx-chart>
+                            </div>
+                            <div class="row text-center mx-0">
+                                <div class="col-12  py-1">
+                                    <p class="card-text text-muted mb-0">{{'Controle.admins'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card p-0">
+                            <div id="goalChartoptions">
+                                <apx-chart #goalChartRef [chart]="goalChartoptions?.chart"
+                                    [series]="[AdminDataHome.num_Frams]" [colors]="goalChartoptions?.colors"
+                                    [plotOptions]="goalChartoptions?.plotOptions" [fill]="goalChartoptions?.fill"
+                                    [stroke]="goalChartoptions?.stroke" [grid]="goalChartoptions?.grid"></apx-chart>
+                            </div>
+                            <div class="row text-center mx-0">
+                                <div class="col-12  py-1">
+                                    <p class="card-text text-muted mb-0">{{'Controle.Farms'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <!-- Apexchart component-->
+            <!-- <div id="gainedChartoptions">
+                <div id="chart">
+                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+                        [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid" [stroke]="chartOptions.stroke"
+                        [title]="chartOptions.title"></apx-chart>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!--/ Congratulations Card -->
+
+<!--The content below is only a placeholder and can be replac

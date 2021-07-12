@@ -1,0 +1,136 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-search></app-search>
+        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{'AttendanceAndLeave.AbsentEmpoyees' | translate}}</h4>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{'common.Name' | translate}}</th>
+                                    <th>{{'common.OfficesName' | translate}}</th>
+                                    <th>{{'AttendanceAndLeave.AttendTime' | translate}}</th>
+                                    <th>{{'AttendanceAndLeave.LeaveTime' | translate}}</th>
+                                    <th>{{'common.Date' | translate}}</th>
+                                    <th>{{'common.Action' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Macca</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            8:00 AM
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">6:00 PM</span></td>
+                                    <td>
+                                       1/1/2021
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger mr-1 mb-1"  rippleEffect>{{'AttendanceAndLeave.TransfertDeVacances'|translate}}</button>
+                                        <button type="button" class="btn btn-info mr-1 mb-1" rippleEffect>{{'btn.Accept' |translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Macca</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            8:00 AM
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">6:00 PM</span></td>
+                                    <td>
+                                       1/1/2021
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger mr-1 mb-1"  rippleEffect>{{'AttendanceAndLeave.TransfertDeVacances'|translate}}</button>
+                                        <button type="button" class="btn btn-info mr-1 mb-1" rippleEffect>{{'btn.Accept' |translate}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+        <!-- dialog -->
+        <p-dialog [(visible)]="editDisplayModal" [modal]="true" [style]="{width: '50vw'}"
+            [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-column">{{'Name' | translate}}</label>
+                                        <input type="text" id="first-name-column" class="form-control"
+                                            placeholder="First Name" name="fname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'Name' | translate}}</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            placeholder="Last Name" name="lname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city-column">{{'City' | translate}}</label>
+                                        <input type="text" id="city-column" class="form-control" placeholder="City"
+                                            name="city-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">{{'Country' | translate}}</label>
+                                        <input type="text" id="country-floating" class="form-control"
+                                            name="country-floating" placeholder="Country" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'Company' | translate}}</label>
+                                        <input type="text" id="company-column" class="form-control"
+                                            name="company-column" placeholder="Company" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'Email' | translate}}</label>
+                                        <input type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="Email" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <button type="button" style="float: right;" (click)="UpdateEmployeeOffices()"
+                        class="btn btn-gradient-success mt-1">{{'Agree'|translate}}</button>
+                    <button type="button" style="float: right;" (click)="this.editDisplayModal = false"
+                        class="btn btn-gradient-danger mt-1 mr-1">{{'Reject'|translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+</div>

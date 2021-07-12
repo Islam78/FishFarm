@@ -1,0 +1,156 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-search></app-search>
+        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{'contracts.ResignationRequests' | translate}}</h4>
+                        <button type="button" class="btn btn-info mr-1" (click)="showEditModalDialog()"
+                            rippleEffect>{{'contracts.demandeDeDémission'|translate}}</button>
+
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> {{'common.Name' | translate}}</th>
+                                    <th> {{'common.Email' | translate}} </th>
+                                    <th> {{'common.Date' | translate}} </th>
+                                    <th> {{'common.JobTybe' | translate}} </th>
+                                    <th> {{'common.Action' | translate}} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button type="button" class="btn btn-danger " rippleEffect>{{'contracts.PrintDeDémission'
+                                            |translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button type="button" class="btn btn-danger" rippleEffect>{{'contracts.PrintDeDémission'
+                                            |translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button type="button" class="btn btn-danger" rippleEffect>{{'contracts.PrintDeDémission'
+                                            |translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button type="button" class="btn btn-danger" rippleEffect>{{'contracts.PrintDeDémission'
+                                            |translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button type="button" class="btn btn-danger" rippleEffect>{{'contracts.PrintDeDémission'
+                                            |translate}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+        <!-- dialog -->
+        <p-dialog [(visible)]="editDisplayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+                        <form class="form">
+                            <div class="row">
+
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'common.SelectEmployee'|translate}}</label>
+                                        <select class="form-control" name="" id="">
+                                            <option value="">islam</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'common.Reason'|translate}}</label>
+                                        <textarea class="form-control" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="DialogBtnRight">
+                            <button type="button" (click)="UpdateEmployeeOffices()"
+                                class="btn btn-gradient-success mt-1">{{'Add'|translate}}</button>
+                        </div>
+                        <div class="DialogBtnLeft">
+                            <button type="button" (click)="this.editDisplayModal = false"
+                                class="btn btn-gradient-danger mt-1 text-left">{{'Cancel'|translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+</div>

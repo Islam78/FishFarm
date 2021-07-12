@@ -1,0 +1,314 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-search></app-search>
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> {{'ManageEmployee.Name' | translate}}</th>
+                                    <th> {{'ManageEmployee.Email' | translate}} </th>
+                                    <th> {{'ManageEmployee.Phone' | translate}} </th>
+                                    <th> {{'ManageEmployee.ExpectedArrivalDate' | translate}} </th>
+                                    <th> {{'ManageEmployee.JobTybe' | translate}} </th>
+                                    <th> {{'ManageEmployee.Action' | translate}} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>0123456789</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                        1/2/2021
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button type="button" class="btn btn-danger mr-1" rippleEffect>
+                                            {{'ManageEmployee.HaveBeenReached' | translate}}
+                                        </button>
+                                        <button  (click)="ReviewDialog()" type="button" class="btn btn-success" rippleEffect>
+                                            {{'ManageEmployee.Review' | translate}}
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>0123456789</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                        1/2/2021
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button type="button" class="btn btn-danger mr-1" rippleEffect>
+                                            {{'ManageEmployee.HaveBeenReached' | translate}}
+                                        </button>
+                                        <button (click)="ReviewDialog()" type="button" class="btn btn-success" rippleEffect>
+                                            {{'ManageEmployee.Review' | translate}}
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+        <p-dialog header="{{'ManageEmployee.Review' | translate}}" [(visible)]="editDisplayModal" [modal]="true" [style]="{width: '50vw'}"
+            [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+                        <ul ngbNav #nav="ngbNav" class="nav-tabs">
+                            <li ngbNavItem>
+                                <a ngbNavLink><span
+                                        class="bs-stepper-title">{{'ManageEmployee.EmployeeDetail'|translate}}</span></a>
+                                <ng-template ngbNavContent>
+                                    <form #accountDetailsForm="ngForm">
+                                        <div class="content-header">
+                                            <h5 class="mb-0"> {{'ManageEmployee.EmployeeDetail'| translate}} </h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="username">{{'ManageEmployee.EmployeeName'|translate}}: </label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+        
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="email">{{'ManageEmployee.nationality'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label"
+                                                    for="password">{{'ManageEmployee.gender'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label"
+                                                    for="confirm-password">{{'ManageEmployee.BirthDate'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label"
+                                                    for="confirm-password">{{'ManageEmployee.JobInvisa'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label"
+                                                    for="confirm-password">{{'ManageEmployee.RealJob'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </ng-template>
+                            </li>
+                            <li ngbNavItem>
+                                <a ngbNavLink> <span
+                                        class="bs-stepper-title">{{'ManageEmployee.DetailsSalaryAndJob'|translate}}</span></a>
+                                <ng-template ngbNavContent>
+                                    <form #personalInfoForm="ngForm">
+                                        <div class="content-header">
+                                            <h5 class="mb-0">{{'ManageEmployee.DetailsSalaryAndJob'| translate}}</h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="first-name">{{'ManageEmployee.JobTybe'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="last-name">{{'ManageEmployee.BasicSalary'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="country">{{'ManageEmployee.SubsistenceAllowance'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="country">{{'ManageEmployee.HousingAllowance'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="country">{{'ManageEmployee.RelocationAllowance'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="country">{{'ManageEmployee.TotalSalary'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </ng-template>
+                            </li>
+                            <li ngbNavItem>
+                                <a href="javascript:void(0)" ngbNavLink> <span
+                                        class="bs-stepper-title">{{'ManageEmployee.PasportDetail'|
+                                        translate}}</span></a>
+                                <ng-template ngbNavContent>
+                                    <form #addressForm="ngForm">
+                                        <div class="content-header">
+                                            <h5 class="mb-0">{{'ManageEmployee.PasportDetail'| translate}}</h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="PassportNumber">
+                                                    {{'ManageEmployee.PassportNumber'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportDate">{{'ManageEmployee.StartDataPassport'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportEndDate">{{'ManageEmployee.EndDataPassport'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportEndDate">{{'ManageEmployee.CopyPassport'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportEndDate">{{'ManageEmployee.PhotoVisa'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="TDvisa_number">{{'ManageEmployee.VisaNumber'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="carrier_company">{{'ManageEmployee.CarrierCompany'| translate}}:
+                                                </label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="travel_date">{{'ManageEmployee.TravelDate'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportEndDate">{{'ManageEmployee.PhotoTicket'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </ng-template>
+                            </li>
+                            <li ngbNavItem>
+                                <a ngbNavLink> <span class="bs-stepper-title"> {{'ManageEmployee.uniformDetail'| translate}}
+                                    </span></a>
+                                <ng-template ngbNavContent>
+                                    <form #socialLinkForm="ngForm">
+                                        <div class="content-header">
+                                            <h5 class="mb-0"> {{'ManageEmployee.uniformDetail'| translate}}</h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="T_shirtSizeVar">{{'ManageEmployee.TshirtSize'|translate}}:
+                                                </label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="PantsSize">
+                                                    {{'ManageEmployee.PantsSize'|translate}}: </label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="shoeSize">{{'ManageEmployee.ShoeSize'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PhoneType">{{'ManageEmployee.PhoneType'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+        
+                                        </div>
+                                    </form>
+                                </ng-template>
+                            </li>
+                        </ul>
+                        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+                        <div class="d-flex">
+                            <div>
+                                <button type="button" (click)="this.editDisplayModal = false"
+                                    class="btn btn-gradient-danger mt-1 text-left">{{'btn.Cancel'|translate}}</button>
+                            </div>
+                            <div class="ml-auto">
+                                <button type="button" (click)="this.editDisplayModal = false"
+                                    class="btn btn-gradient-danger mt-1 mr-1">{{'btn.Refuse'|translate}}</button>
+                                <button type="button" (click)="ReviewDialog()"
+                                    class="btn btn-gradient-success mt-1">{{'btn.Add'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+
+    </div>
+</div>

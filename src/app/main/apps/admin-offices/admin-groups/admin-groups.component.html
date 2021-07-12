@@ -1,0 +1,138 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-search [Show]="true" [SearchArr]="SearchArr" [SearchHeader]="SearchHeader" (click)="MakeSearchArr()">
+        </app-search>
+        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+        <!-- Basic Alerts start -->
+        <section id="sample-page">
+            <div class="card">                
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <p-dialog class="mt-2" [(visible)]="addDisplayModal" [modal]="true" [style]="{width: '50vw'}"
+                            [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-contol">
+                                        <input type="text" class="form-control" placeholder="" #addGroup >
+                                    </div>
+                                </div>
+                            </div>
+                            <ng-template pTemplate="footer">
+                                <button icon="pi pi-check" (click)="add(addGroup)" label="Add"
+                                    class="btn btn-primary btn-next">{{'adminOffices.Add' | translate}}</button>
+                            </ng-template>
+                        </p-dialog>
+                        <button type="button" class="btn btn-info ml-1 mt-1" (click)="showAddModalDialog()"
+                            rippleEffect>{{'adminOffices.Add'|translate}}</button>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <p-table [value]="groups" [paginator]="true" [lazy]="true" [loading]="loading" [rows]="7">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>{{'adminOffices.Code' | translate}}</th>
+                                    <th>{{'adminOffices.Name' | translate}}</th>
+                                    <th>{{'adminOffices.Date' | translate}}</th>
+                                    <th>{{'adminOffices.Action' | translate}}</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-item>
+                                <tr>
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.group_name}}</td>
+                                    <td>{{item.updated_at |date}}</td>
+                                    <td>
+                                        <button type="button" (click)="OpenEdit(item)"
+                                            class="btn btn-info mr-1 mb-1">{{'adminOffices.Edit'|translate}}</button>
+                                        <button type="button" (click)="remove(item)"
+                                            class="btn btn-danger mr-1 mb-1">{{'adminOffices.Delete'|translate}}</button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+                <p-dialog header="Edit" [(visible)]="editDisplayModal" [modal]="true" [style]="{width: '50vw'}"
+                    [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-contol">
+                                <div class="row">
+                                    <div class="col-4 mt-1" *ngFor="let item of GroupsPermissions">
+                                        <button style="padding: 20px;
+                                        padding-bottom: 35px;" type="button"
+                                            class="btn btn-outline-primary form-control " rippleEffect>
+                                            <div *ngIf="item.selected == true" (click)="item.selected = false"
+                                                class="custom-control custom-control-success custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="colorCheck3"
+                                                    checked />
+                                                <label class="custom-control-label" for="colorCheck5"></label>
+                                                <span (click)="item.edit = true" *ngIf="item?.edit == false">
+                                                    {{item.permission_name}}
+                                                </span>
+                                            </div>
+                                            <div *ngIf="item.selected == false" (click)="item.selected = true"
+                                                class="custom-control custom-control-danger custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="colorCheck5"
+                                                    checked />
+                                                <label class="custom-control-label" for="colorCheck5"></label>
+                                                <span (click)="item.edit = true" *ngIf="item?.edit == false">
+                                                    {{item.permission_name}}
+                                                </span>
+                                            </div>
+                                        </button>
+                                        <br>
+                                    </div>
+                                </div>
+                                <!-- <p-table [value]="GroupsPermissions" [paginator]="true" [lazy]="true" [loading]="loading" [rows]="7" [filterDelay]="true">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th>{{'Code' | translate}}</th>
+                                            <th>{{'Name' | translate}}</th>
+                                            <th>{{'Selected' | translate}}</th>
+                                            <th *ngIf="item?.edit == true">
+                                                {{'Action' | translate}}
+                                            </th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-item>
+                                        <tr>
+                                            <td>{{item.id}}</td>
+                                            <td>
+                                                <span (click)="item.edit = true" *ngIf="item?.edit == false">
+                                                    {{item.permission_name}}
+                                                </span>
+                                                <span *ngIf="item?.edit == true">
+                                                    <input type="text" [(ngModel)]="item.permission_name"
+                                                        (keydown.enter)="SaveNewPerm(item)" class="form-control">
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <div *ngIf="item.selected == true" (click)="item.selected = false" class="custom-control custom-control-success custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="colorCheck3" checked />
+                                                    <label class="custom-control-label" for="colorCheck5"></label>
+
+                                                </div>
+                                                <div *ngIf="item.selected == false" (click)="item.selected = true" class="custom-control custom-control-danger custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="colorCheck5" checked />
+                                                    <label class="custom-control-label" for="colorCheck5"></label>
+                                                </div>
+                                            </td>
+                                            <td *ngIf="item?.edit == true">
+                                                <button type="button" (click)=" DeleteNewPerm(item)" class="btn btn-gradient-danger">{{'Cancel'|translate}}</button>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table> -->
+                                <button type="button" style="float: right;" (click)="UpdateGroupPermisions()"
+                                    class="btn btn-gradient-success mt-1">{{'adminOffices.Save'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </p-dialog>
+            </div>
+        </section>
+        <!-- Basic Alerts end -->
+    </div>
+</div>

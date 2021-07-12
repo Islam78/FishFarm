@@ -1,0 +1,133 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{'Reports.title' | translate}} - {{Farm_name}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-contol">
+                                        <div class="row">
+                                            <div class="col-md-5 col-12">
+                                                <div class="form-group">
+                                                    <label for="first-name-column">{{
+                                                        "common.DateFrom" | translate
+                                                        }}</label>
+                                                    <input class="form-control" type="date" ngModel #Start_Date
+                                                        name="Start_Date" id="Start_Date">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-12">
+                                                <div class="form-group">
+                                                    <label for="first-name-column">{{
+                                                        "common.DateTo" | translate
+                                                        }}</label>
+                                                    <input class="form-control" type="date" ngModel #End_Date
+                                                        name="End_Date" id="End_Date">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 col-12 mt-2">
+                                                <button type="submit" class="btn btn-gradient-success">
+                                                    <i class="fas fa-plus"></i>
+                                                    {{ "btn.Save" | translate }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <ng-container *ngIf="isLoading; else elseTemplate">
+                        <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <div class="row">
+                            <div class="col-8">
+                                <p-table [responsive]="true" [value]="dataList" [paginator]="true" [rows]="7"
+                                    [filterDelay]="true">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th pSortableColumn="User_id">
+                                                {{'common.id' | translate}}
+                                                <p-sortIcon field="User_id"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="Date">
+                                                {{'common.Date' | translate}}
+                                                <p-sortIcon field="Date"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="Time">
+                                                {{'Reports.Time' | translate}}
+                                                <p-sortIcon field="Time"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="PH_sensor">
+                                                {{'Reports.Ph' | translate}}
+                                                <p-sortIcon field="PH_sensor"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="Temperature_sensor">
+                                                {{'Reports.Temp' | translate}}
+                                                <p-sortIcon field="Temperature_sensor"></p-sortIcon>
+                                            </th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+                                        <tr>
+                                            <td>
+                                                <span class="PhoneReviwe"></span> {{ rowIndex+1 }}
+                                            </td>
+                                            <td>
+                                                <span class="PhoneReviwe"></span> {{ product.date | date }}
+                                            </td>
+                                            <td>
+                                                <span class="PhoneReviwe"></span> {{ product.time |slice : '1' : '5'}}
+                                            </td>
+                                            <td>
+                                                <span class="PhoneReviwe"></span> {{ product.PH_sensor }}
+                                            </td>
+                                            <td>
+                                                <span class="PhoneReviwe"></span> {{ product.Temperature_sensor }}
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                            <!-- reports -->
+                            <div class="col-md-4">
+                                <ng-select class="darkTest" [items]="[
+                                {label:'Horizontal Bar',value:'horizontalBar'},
+                                {label:'Radar',value:'radar'},
+                                {label:'Bar',value:'bar'},
+                                {label:'PolarArea',value:'polarArea'},
+                                {label:'Line',value:'line'},
+                                ]" required bindLabel="label" bindValue="value" (change)="ChangeChart($event)">
+                                </ng-select>
+                                <div class="chart">
+                                    <p-chart [responsive]="true" *ngIf="ChartType == 'line'" id="p-Chart" type="line"
+                                        [data]="data" width="200" height="500" (onDataSelect)="selectData($event)">
+                                    </p-chart>
+                                    <p-chart *ngIf="ChartType == 'horizontalBar'" type="horizontalBar" [data]="data"
+                                        width="200" height="500" (onDataSelect)="selectData($event)">
+                                    </p-chart>
+                                    <p-chart *ngIf="ChartType == 'radar'" type="radar" [data]="data" width="200"
+                                        height="500" (onDataSelect)="selectData($event)"></p-chart>
+                                    <p-chart *ngIf="ChartType == 'bar'" type="bar" [data]="data" width="200"
+                                        height="500" (onDataSelect)="selectData($event)"></p-chart>
+                                    <p-chart *ngIf="ChartType == 'polarArea'" type="polarArea" [data]="data" width="200"
+                                        height="500" (onDataSelect)="selectData($event)"></p-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+    </div>
+</div>

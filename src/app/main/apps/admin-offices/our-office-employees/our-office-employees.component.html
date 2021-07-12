@@ -1,0 +1,315 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-search [Show]="true" [SearchArr]="SearchArr" (click)="MakeSearchArr()"></app-search>
+        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{'adminOffices.OurOfficeEmployees' | translate}}</h4>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> {{'common.EmployeeName' | translate}}</th>
+                                    <th> {{'common.OfficesName' | translate}} </th>
+                                    <th> {{'common.Date' | translate}} </th>
+                                    <th> {{'common.JobTybe' | translate}} </th>
+                                    <th> {{'common.Action' | translate}} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            1/2/2020
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <div class="btn-group">
+                                            <div ngbDropdown>
+                                                <button ngbDropdownToggle class="btn btn-primary" type="button"
+                                                    id="dropdownMenuButton" rippleEffect>
+                                                    {{'common.Action' | translate}}
+                                                </button>
+                                                <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+                                                    <a ngbDropdownItem href="javascript:void(0)">
+                                                        <button (click)="showEditModalDialog()" type="button"
+                                                            class="btn btn-primary" rippleEffect>
+                                                            {{'ViewDraftContract' | translate}}
+                                                        </button>
+                                                    </a>
+                                                    <a ngbDropdownItem href="javascript:void(0)">
+                                                        <button (click)="showEditModalDialog()" type="button"
+                                                            class="btn btn-primary" rippleEffect>
+                                                            {{'Accept' | translate}}
+                                                        </button>
+                                                    </a>
+                                                    <a ngbDropdownItem href="javascript:void(0)">
+                                                        <button (click)="showEditModalDialog()" type="button"
+                                                            class="btn btn-primary" rippleEffect>
+                                                            {{'Refuse' | translate}}
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            1/2/2020
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <div class="btn-group">
+                                            <div ngbDropdown>
+                                                <button ngbDropdownToggle class="btn btn-primary" type="button"
+                                                    id="dropdownMenuButton" rippleEffect>
+                                                    {{'common.Action' | translate}}
+                                                </button>
+                                                <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+                                                    <a ngbDropdownItem href="javascript:void(0)">
+                                                        <button (click)="showEditModalDialog()" type="button"
+                                                            class="btn btn-primary" rippleEffect>
+                                                            {{'ViewDraftContract' | translate}}
+                                                        </button>
+                                                    </a>
+                                                    <a ngbDropdownItem href="javascript:void(0)">
+                                                        <button (click)="showEditModalDialog()" type="button"
+                                                            class="btn btn-primary" rippleEffect>
+                                                            {{'Accept' | translate}}
+                                                        </button>
+                                                    </a>
+                                                    <a ngbDropdownItem href="javascript:void(0)">
+                                                        <button (click)="showEditModalDialog()" type="button"
+                                                            class="btn btn-primary" rippleEffect>
+                                                            {{'Refuse' | translate}}
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            1/2/2020
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <div class="btn-group">
+                                            <div ngbDropdown>
+                                                <button ngbDropdownToggle class="btn btn-primary" type="button"
+                                                    id="dropdownMenuButton" rippleEffect>
+                                                    {{'common.Action' | translate}}
+                                                </button>
+                                                <div ngbDropdownMenu aria-labelledby="dropdownMenuButton">
+                                                    <a ngbDropdownItem href="javascript:void(0)">
+                                                        <button (click)="showEditModalDialog()" type="button"
+                                                            class="btn btn-primary" rippleEffect>
+                                                            {{'ViewDraftContract' | translate}}
+                                                        </button>
+                                                    </a>
+                                                    <a ngbDropdownItem href="javascript:void(0)">
+                                                        <button (click)="showEditModalDialog()" type="button"
+                                                            class="btn btn-primary" rippleEffect>
+                                                            {{'Accept' | translate}}
+                                                        </button>
+                                                    </a>
+                                                    <a ngbDropdownItem href="javascript:void(0)">
+                                                        <button (click)="showEditModalDialog()" type="button"
+                                                            class="btn btn-primary" rippleEffect>
+                                                            {{'Refuse' | translate}}
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+        <!-- dialog -->
+        <p-dialog header="Edit" [(visible)]="editDisplayModal" [modal]="true" [style]="{width: '50vw'}"
+            [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-column">{{'EmployeeName'|translate}}</label>
+                                        <input disabled type="text" id="first-name-column" class="form-control"
+                                            placeholder="islam" disabled name="fname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'nationality' | translate}}</label>
+                                        <input disabled type="text" id="last-name-column" class="form-control"
+                                            placeholder="مصري" disabled name="lname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="city-column">{{'gender' | translate}}</label>
+                                        <input disabled type="text" id="city-column" class="form-control"
+                                            placeholder="ذكر" disabled name="city-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">{{'BirthDate' | translate}}</label>
+                                        <input disabled type="text" id="country-floating" class="form-control"
+                                            name="country-floating" placeholder="مهندس" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">{{'Age' | translate}}</label>
+                                        <input disabled type="text" id="country-floating" class="form-control"
+                                            name="country-floating" placeholder="مهندس" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">{{'JobInvisa' | translate}}</label>
+                                        <input disabled type="text" id="country-floating" class="form-control"
+                                            name="country-floating" placeholder="مهندس" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'RealJob' | translate}}</label>
+                                        <input disabled type="text" id="company-column" class="form-control"
+                                            name="company-column" placeholder="مهندس برمجيات" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'EmployeeType' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="مبرمج" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'MainSalary' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="9000" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'HousingAllowance' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="2000" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'RelocationAllowance' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="500" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'TotalSalary' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="11500" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'PassportNumber' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="11500" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'StartDataPassport' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="11500" disabled />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'EndDataPassport' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="11500" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{' VisaNumber ' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="11500" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'carriercompany' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="11500" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'TravelDate' | translate}}</label>
+                                        <input disabled type="email" id="email-id-column" class="form-control"
+                                            name="email-id-column" placeholder="11500" disabled />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                        <div class="DialogBtnRight">
+                            <button type="button" (click)="UpdateEmployeeOffices()"
+                                class="btn btn-gradient-success mt-1">{{'Add'|translate}}</button>
+                            <button type="button" (click)="this.editDisplayModal = false"
+                                class="btn btn-gradient-danger mt-1 ml-1">{{'Refuse'|translate}}</button>
+                        </div>
+                        <div class="DialogBtnLeft">
+                            <button type="button" (click)="this.editDisplayModal = false"
+                                class="btn btn-gradient-danger mt-1 text-left">{{'Cancel'|translate}}</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+</div>

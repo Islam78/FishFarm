@@ -1,0 +1,760 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <!-- Horizontal Wizard -->
+        <section class="horizontal-wizard">
+            <app-search [Show]="true" [SearchArr]="SearchArr" (click)="MakeSearchArr()"></app-search>
+            
+            <div id="stepper1" class="bs-stepper horizontal-wizard-example">
+
+                <div class="bs-stepper-header">
+
+                    <div class="step" data-target="#account-details">
+                        <button class="step-trigger">
+                            <span class="bs-stepper-box">1</span>
+                            <span class="bs-stepper-label">
+                                <span class="bs-stepper-title">{{'ManageEmployee.title'| translate}}</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="line"><i data-feather="chevron-right" class="font-medium-2"></i></div>
+                    <div class="step" data-target="#personal-info">
+                        <button class="step-trigger">
+                            <span class="bs-stepper-box">2</span>
+                            <span class="bs-stepper-label">
+
+                                <span class="bs-stepper-title">{{'ManageEmployee.DetailsSalaryAndJob'|
+                                    translate}}</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="line"><i data-feather="chevron-right" class="font-medium-2"></i></div>
+                    <div class="step" data-target="#address">
+                        <button class="step-trigger">
+                            <span class="bs-stepper-box">3</span>
+                            <span class="bs-stepper-label">
+                                <span class="bs-stepper-title">{{'ManageEmployee.PassportDetail'| translate}}</span>
+                                <!-- <span class="bs-stepper-subtitle">Add Address</span> -->
+                            </span>
+                        </button>
+                    </div>
+                    <div class="line"><i data-feather="chevron-right" class="font-medium-2"></i></div>
+                    <div class="step" data-target="#uniform">
+                        <button class="step-trigger">
+                            <span class="bs-stepper-box">4</span>
+                            <span class="bs-stepper-label">
+                                <span class="bs-stepper-title"> {{'ManageEmployee.uniformDetail'| translate}} </span>
+                                <!-- <span class="bs-stepper-subtitle">Add Social Links</span> -->
+                            </span>
+                        </button>
+                    </div>
+                    <!-- <div class="line"><i data-feather="chevron-right" class="font-medium-2"></i></div>
+                    <div class="step" data-target="#access-detail">
+                        <button class="step-trigger">
+                            <span class="bs-stepper-box">5</span>
+                            <span class="bs-stepper-label">
+                                <span class="bs-stepper-title"> {{'ManageEmployee.AccessDetail'| translate}} </span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="line"><i data-feather="chevron-right" class="font-medium-2"></i></div>
+                    <div class="step" data-target="#id-details">
+                        <button class="step-trigger">
+                            <span class="bs-stepper-box">6</span>
+                            <span class="bs-stepper-label">
+                                <span class="bs-stepper-title"> {{'ManageEmployee.IdDetail'| translate}} </span>
+                            </span>
+                        </button>
+                    </div> -->
+                </div>
+                <div class="bs-stepper-content">
+                    <form (ngSubmit)="(HWForm.form.valid)" #HWForm="ngForm">
+                        <div id="account-details" class="content">
+                            <form #accountDetailsForm="ngForm">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="user_name">{{'ManageEmployee.EmployeeName'|
+                                            translate}} </label>
+                                        <input [(ngModel)]="TDNameVar" #TDNameRef="ngModel" type="text" name="user_name"
+                                            id="user_name" class="form-control"
+                                            [class.error]="!TDNameRef.valid && accountDetailsForm.submitted" />
+                                        <span *ngIf="accountDetailsForm.submitted && TDNameRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger" *ngIf="TDNameRef.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="phone_number">{{'ManageEmployee.PhoneNumber'|
+                                            translate}}
+                                        </label>
+                                        <input [(ngModel)]="TDPhoneVar" #TDPhoneRef="ngModel" type="number"
+                                            name="phone_number" id="phone_number" class="form-control"
+                                            [class.error]="!TDPhoneRef.valid && accountDetailsForm.submitted" />
+                                        <!-- required -->
+                                        <span *ngIf="accountDetailsForm.submitted && TDPhoneRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger" *ngIf="TDPhoneRef.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- password -->
+                                <!-- <div class="row">
+                                    <div class="form-group form-password-toggle col-md-6">
+                                        <label class="form-label" for="password">كلمة المرور</label>
+                                        <input [(ngModel)]="TDPasswordVar" type="password" name="password" id="password" class="form-control" [class.error]="!TDPasswordOnlyRef.valid && accountDetailsForm.submitted" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                            ngModel #TDPasswordOnlyRef="ngModel" required minlength="6" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                                        <div *ngIf="TDPasswordOnlyRef.invalid && accountDetailsForm.submitted" class="form-text text-danger">
+                                            <small *ngIf="TDPasswordOnlyRef.errors.required"> Password is required.
+                                            </small>
+                                            <small *ngIf="TDPasswordOnlyRef.errors.pattern">
+                                                Must contain at least one number and one uppercase and lowercase letter,
+                                                and at least 8 or more
+                                                characters.</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-password-toggle col-md-6">
+                                        <label class="form-label" for="confirm-password">تأكيد كلمة المرور</label>
+                                        <input type="password" name="confirm-password" id="confirm-password" class="form-control" [class.error]="!TDRepeatPasswordRef.valid && accountDetailsForm.submitted" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                            ngModel required #TDRepeatPasswordRef="ngModel" pattern="{{ TDPasswordOnlyRef.value }}" minlength="6" />
+                                        <div *ngIf="TDRepeatPasswordRef.invalid && accountDetailsForm.submitted" class="form-text text-danger">
+                                            <small *ngIf="TDRepeatPasswordRef.errors.required"> Confirm password is
+                                                required. </small>
+                                            <small *ngIf="TDRepeatPasswordRef.errors.pattern">
+                                                Password & Confirm Password does not match.</small>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="Nationality"> {{'ManageEmployee.nationality'|
+                                            translate}}
+                                        </label>
+                                        <input [(ngModel)]="TDNationalityVar" #TDNationalityRef="ngModel" type="text"
+                                            name="Nationality" id="Nationality" class="form-control"
+                                            [class.error]="!TDNationalityRef.valid && accountDetailsForm.submitted" />
+                                        <span *ngIf="accountDetailsForm.submitted && TDNationalityRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDNationalityRef.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="Type"> {{'ManageEmployee.gender'|
+                                            translate}}</label>
+                                        <div class="form-group">
+                                            <ng-select [items]="TDTypeVar" #TDTypeRef (change)="Gender($event)"
+                                                bindLabel="name"> </ng-select>
+                                        </div>
+                                        <!-- <input [(ngModel)]="TDTypeVar" #TDTypeRef="ngModel" type="text" name="Type" id="Type" class="form-control" [class.error]="!TDTypeRef.valid && accountDetailsForm.submitted" /> -->
+                                        <span *ngIf="accountDetailsForm.submitted && TDTypeRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger" *ngIf="TDTypeRef.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <!-- DateOfBirth -->
+                                        <label class="form-label" for="DateOfBirth">{{'ManageEmployee.BirthDate'|
+                                            translate}}</label>
+                                        <div class="input-group">
+                                            <input class="form-control" name="Basic Date Picker"
+                                                [(ngModel)]="TDDateOfBirthVar" ngbDatepicker
+                                                #DateOfBirth="ngbDatepicker">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary feather icon-calendar"
+                                                    (click)="DateOfBirth.toggle()" type="button" rippleEffect></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="Age"> {{'ManageEmployee.Age'| translate}}</label>
+                                        <input [(ngModel)]="TDAgeVar" #TDAgeRef="ngModel" type="number" name="Age"
+                                            id="Age" class="form-control"
+                                            [class.error]="!TDAgeRef.valid && accountDetailsForm.submitted" />
+                                        <span *ngIf="accountDetailsForm.submitted && TDAgeRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger" *ngIf="TDAgeRef.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="Visaprofession">{{'ManageEmployee.JobInvisa'|
+                                            translate}}</label>
+
+                                        <input [(ngModel)]="TDVisaprofessionVar" #TDVisaprofessionRef="ngModel"
+                                            type="text" name="Visaprofession" id="Visaprofession" class="form-control"
+                                            [class.error]="!TDVisaprofessionRef.valid && accountDetailsForm.submitted" />
+                                        <span *ngIf="accountDetailsForm.submitted && TDVisaprofessionRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDVisaprofessionRef.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="Actualprofession"> {{'ManageEmployee.RealJob'|
+                                            translate}}</label>
+                                        <div class="form-group">
+                                            <ng-select [items]="ActualprofessionArr" #TDActualprofessionRef
+                                                (change)="Actualprofession($event)" bindLabel="job_name_ar"></ng-select>
+                                        </div>
+                                        <span *ngIf="accountDetailsForm.submitted && TDActualprofessionRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDActualprofessionRef.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button (click)="horizontalWizardStepperPrevious()"
+                                        class="btn btn-outline-secondary btn-prev" disabled rippleEffect>
+                                        <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                                        <span class="align-middle d-sm-inline-block d-none">{{'btn.previous' |
+                                            translate}}</span>
+                                    </button>
+                                    <button (click)="horizontalWizardStepperNext(accountDetailsForm)" type="submit"
+                                        class="btn btn-primary btn-next" rippleEffect>
+                                        <span class="align-middle d-sm-inline-block d-none">{{'btn.next' |
+                                            translate}}</span>
+                                        <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="personal-info" class="content">
+                            <form #personalInfoForm="ngForm">
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="EmployeeType">{{'ManageEmployee.EmployeeType'|
+                                            translate}}</label>
+                                        <input [(ngModel)]="TDEmployeeTypeVar" #TDEmployeeTypeRef="ngModel" type="text"
+                                            name="EmployeeType" id="EmployeeType" class="form-control"
+                                            [class.error]="personalInfoForm.submitted && TDEmployeeTypeRef.invalid" />
+                                        <span *ngIf="personalInfoForm.submitted && TDEmployeeTypeRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDEmployeeTypeRef.errors.required">This field is
+                                                required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label"
+                                            for="subsistence_allowance">{{'ManageEmployee.HousingAllowance'|
+                                            translate}} </label>
+                                        <input [(ngModel)]="TDsubsistence_allowanceVar"
+                                            #TDsubsistence_allowanceRef="ngModel" type="text" name="last-name"
+                                            id="last-name" class="form-control"
+                                            [class.error]="personalInfoForm.submitted && TDsubsistence_allowanceRef.invalid" />
+                                        <span *ngIf="personalInfoForm.submitted && TDsubsistence_allowanceRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDsubsistence_allowanceRef.errors.required">This field is
+                                                required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label"
+                                            for="Subsistence">{{'ManageEmployee.SubsistenceAllowance'|
+                                            translate}} </label>
+                                        <input [(ngModel)]="TDSubsistenceVar" #TDSubsistenceRef="ngModel" type="text"
+                                            name="Subsistence" id="Subsistence" class="form-control"
+                                            [class.error]="personalInfoForm.submitted && TDSubsistenceRef.invalid" />
+                                        <span *ngIf="personalInfoForm.submitted && TDSubsistenceRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDSubsistenceRef.errors.required">This field is required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="TDSalaryVar">{{'ManageEmployee.BasicSalary'|
+                                            translate}}
+                                        </label>
+                                        <input [(ngModel)]="TDSalaryVar" #TDTDSalaryVarRef="ngModel" type="text"
+                                            name="TDSalaryVar" id="TDSalaryVar" class="form-control"
+                                            [class.error]="personalInfoForm.submitted && TDTDSalaryVarRef.invalid" />
+                                        <span *ngIf="personalInfoForm.submitted && TDTDSalaryVarRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDTDSalaryVarRef.errors.required">This field is
+                                                required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="RelocationAllowance">
+                                            {{'ManageEmployee.RelocationAllowance'|
+                                            translate}}</label>
+                                        <input [(ngModel)]="TDRelocationAllowanceVar"
+                                            #TDRelocationAllowanceRef="ngModel" type="text" name="RelocationAllowance"
+                                            id="RelocationAllowance" class="form-control"
+                                            [class.error]="personalInfoForm.submitted && TDRelocationAllowanceRef.invalid" />
+                                        <span *ngIf="personalInfoForm.submitted && TDRelocationAllowanceRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDRelocationAllowanceRef.errors.required">This field is
+                                                required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="TotalSalary">{{'ManageEmployee.TotalSalary'|
+                                            translate}}</label>
+                                        <input [(ngModel)]="TDTotalSalaryVar" #TDTotalSalaryRef="ngModel" type="text"
+                                            name="TotalSalary" id="TotalSalary" class="form-control"
+                                            [class.error]="personalInfoForm.submitted && TDTotalSalaryRef.invalid" />
+                                        <span *ngIf="personalInfoForm.submitted && TDTotalSalaryRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDTotalSalaryRef.errors.required">This field is required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button (click)="horizontalWizardStepperPrevious()" class="btn btn-primary btn-prev"
+                                        rippleEffect>
+                                        <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                                        <span class="align-middle d-sm-inline-block d-none">{{'btn.previous' |
+                                            translate}}</span>
+                                    </button>
+                                    <button (click)="horizontalWizardStepperNext(personalInfoForm)"
+                                        class="btn btn-primary btn-next" rippleEffect>
+                                        <span class="align-middle d-sm-inline-block d-none">{{'btn.next'
+                                            |translate}}</span>
+                                        <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="address" class="content">
+                            <form #addressForm="ngForm">
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label class="form-label" for="PassportNumber">
+                                            {{'ManageEmployee.PassportNumber'|
+                                            translate}}</label>
+                                        <input [(ngModel)]="PassportNumberVar" #PassportNumber="ngModel" type="text"
+                                            id="address" name="address" class="form-control"
+                                            [class.error]="addressForm.submitted && PassportNumber.invalid" />
+                                        <span *ngIf="addressForm.submitted && PassportNumber.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="PassportNumber.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label"
+                                            for="PassportDate">{{'ManageEmployee.StartDataPassport'|
+                                            translate}}</label>
+                                        <div class="input-group">
+                                            <input class="form-control" name="Basic Date Picker"
+                                                [(ngModel)]="PassportDateVar" ngbDatepicker
+                                                #PassportDate="ngbDatepicker">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary feather icon-calendar"
+                                                    (click)="PassportDate.toggle()" type="button" rippleEffect></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label"
+                                            for="PassportEndDate">{{'ManageEmployee.EndDataPassport'|
+                                            translate}}</label>
+                                        <div class="input-group">
+                                            <input class="form-control" name="Basic Date Picker"
+                                                [(ngModel)]="PassportEndDateVar" ngbDatepicker
+                                                #PassportEndDate="ngbDatepicker">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary feather icon-calendar"
+                                                    (click)="PassportEndDate.toggle()" type="button"
+                                                    rippleEffect></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label"
+                                            for="PassportEndDate">{{'ManageEmployee.UploadCopyPassport'|
+                                            translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" type="file" ng2FileSelect
+                                                    [uploader]="passportuploader" id="file-upload-single" />
+                                                <label class="custom-file-label">{{'ChooseFile'| translate}}</label>
+                                            </div>
+                                            <table class="table" *ngIf="passportuploader.options.isHTML5">
+                                                <tbody>
+                                                    <tr *ngFor="let item of passportuploader.queue">
+                                                        <td>
+                                                            <strong>{{ item?.file?.name }}</strong>
+                                                        </td>
+                                                        <td *ngIf="passportuploader.options.isHTML5" nowrap>
+                                                            Size: {{ item?.file?.size / 1024 / 1024 | number: '.2' }} MB
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <span *ngIf="item.isSuccess"><i
+                                                                    data-feather="check"></i></span>
+                                                            <span *ngIf="item.isCancel"><i
+                                                                    data-feather="slash"></i></span>
+                                                            <span *ngIf="item.isError"><i
+                                                                    data-feather="x-circle"></i></span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="PassportEndDate">
+                                            {{'ManageEmployee.UploadPhotoVisa'|
+                                            translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" type="file" ng2FileSelect
+                                                    [uploader]="visauploader" id="file-upload-single" />
+                                                <label class="custom-file-label">Choose file</label>
+                                            </div>
+                                            <table class="table" *ngIf="visauploader?.options.isHTML5">
+                                                <tbody>
+                                                    <tr *ngFor="let item of visauploader.queue">
+                                                        <td>
+                                                            <strong>{{ item?.file?.name }}</strong>
+                                                        </td>
+                                                        <td *ngIf="visauploader.options.isHTML5" nowrap>
+                                                            Size: {{ item?.file?.size / 1024 / 1024 | number: '.2' }} MB
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="TDvisa_number">{{'ManageEmployee.VisaNumber'|
+                                            translate}}</label>
+                                        <input [(ngModel)]="TDvisa_numberVar" #TDvisa_numberRef="ngModel" type="text"
+                                            name="TDvisa_number" id="TDvisa_number" class="form-control"
+                                            [class.error]="addressForm.submitted && TDvisa_numberRef.invalid" />
+                                        <span *ngIf="addressForm.submitted && TDvisa_numberRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="TDvisa_numberRef.errors.required">This field is required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="carrier_company">
+                                            {{'ManageEmployee.CarrierCompany'| translate}}
+                                        </label>
+                                        <input [(ngModel)]="TDcarrier_companyVar" #carrier_companyRef="ngModel"
+                                            type="text" name="carrier_company" id="carrier_company" class="form-control"
+                                            [class.error]="addressForm.submitted && carrier_companyRef.invalid" />
+                                        <span *ngIf="addressForm.submitted && carrier_companyRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="carrier_companyRef.errors.required">This field is
+                                                required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="travel_date"> {{'ManageEmployee.TravelDate'|
+                                            translate}}</label>
+                                        <div class="input-group">
+                                            <input class="form-control" name="Basic Date Picker"
+                                                [(ngModel)]="TDtravel_dateVar" ngbDatepicker
+                                                #travel_date="ngbDatepicker">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary feather icon-calendar"
+                                                    (click)="travel_date.toggle()" type="button" rippleEffect></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label"
+                                            for="PassportEndDate">{{'ManageEmployee.UploadPhotoTicket'|
+                                            translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" type="file" ng2FileSelect
+                                                    [uploader]="ticketuploader" id="file-upload-single" />
+                                                <label class="custom-file-label">Choose file</label>
+                                            </div>
+                                            <table class="table" *ngIf="ticketuploader?.options.isHTML5">
+                                                <tbody>
+                                                    <tr *ngFor="let item of ticketuploader.queue">
+                                                        <td>
+                                                            <strong>{{ item?.file?.name }}</strong>
+                                                        </td>
+                                                        <td *ngIf="ticketuploader.options.isHTML5" nowrap>
+                                                            Size: {{ item?.file?.size / 1024 / 1024 | number: '.2' }} MB
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button (click)="horizontalWizardStepperPrevious()" class="btn btn-primary btn-prev"
+                                        rippleEffect>
+                                        <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                                        <span class="align-middle d-sm-inline-block d-none">{{'btn.previous' |
+                                            translate}}</span>
+                                    </button>
+                                    <button (click)="horizontalWizardStepperNext(addressForm)"
+                                        class="btn btn-primary btn-next" rippleEffect>
+                                        <span class="align-middle d-sm-inline-block d-none">{{'btn.next' |
+                                            translate}}</span>
+                                        <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="uniform" class="content">
+                            <form #socialLinkForm="ngForm">
+                                <div class="row">
+                                    <div class="form-group col-md-6 ">
+                                        <label class="form-label" for="T_shirtSizeVar">{{'ManageEmployee.TshirtSize'|
+                                            translate}}
+                                        </label>
+                                        <input [(ngModel)]="T_shirtSizeVar" #T_shirtSizeVarkRef="ngModel" type="text"
+                                            id="T_shirtSizeVar" name="T_shirtSizeVar" class="form-control"
+                                            [class.error]="socialLinkForm.submitted && T_shirtSizeVarkRef.invalid" />
+                                        <span *ngIf="socialLinkForm.submitted && T_shirtSizeVarkRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="T_shirtSizeVarkRef.errors.required">This field is
+                                                required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6 ">
+                                        <label class="form-label" for="PantsSize"> {{'ManageEmployee.PantsSize'|
+                                            translate}} </label>
+                                        <input [(ngModel)]="PantsSizeVar" #PantsSizeRef="ngModel" type="text"
+                                            id="PantsSize" name="PantsSize" class="form-control"
+                                            [class.error]="socialLinkForm.submitted && PantsSizeRef.invalid" />
+                                        <span *ngIf="socialLinkForm.submitted && PantsSizeRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="PantsSizeRef.errors.required">This field is required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6 ">
+                                        <label class="form-label" for="shoeSize">{{'ManageEmployee.ShoeSize'|
+                                            translate}}</label>
+                                        <input [(ngModel)]="shoeSizeVar" #shoeSizeRef="ngModel" type="text"
+                                            id="shoeSize" name="shoeSize" class="form-control"
+                                            [class.error]="socialLinkForm.submitted && shoeSizeRef.invalid" />
+                                        <span *ngIf="socialLinkForm.submitted && shoeSizeRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="shoeSizeRef.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="PhoneType">{{'ManageEmployee.PhoneType'|
+                                            translate}}</label>
+                                        <input [(ngModel)]="PhoneTypeVar" #PhoneTypeRef="ngModel" type="text"
+                                            id="PhoneType" name="PhoneType" class="form-control"
+                                            [class.error]="socialLinkForm.submitted && PhoneTypeRef.invalid" />
+                                        <span *ngIf="socialLinkForm.submitted && PhoneTypeRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="PhoneTypeRef.errors.required">This field is required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button (click)="horizontalWizardStepperPrevious()" class="btn btn-primary btn-prev"
+                                        rippleEffect>
+                                        <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                                        <span class="align-middle d-sm-inline-block d-none">{{'btn.previous' |
+                                            translate}}</span>
+                                    </button>
+                                    <button (click)="horizontalWizardStepperNext(personalInfoForm)"
+                                        class="btn btn-primary btn-next" rippleEffect>
+                                        <span class="align-middle d-sm-inline-block d-none">{{'btn.next' |
+                                            translate}}</span>
+                                        <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- <div id="access-detail" class="content">
+                            <form #socialLinkForm="ngForm">
+                                <div class="content-header">
+                                    <h5 class="mb-0">معلومات الوصول</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6 ">
+                                        <label class="form-label" for="BorderNumber"> {{'BorderNumber'| translate}}
+                                        </label>
+                                        <input [(ngModel)]="BorderNumberVar" #BorderNumberkRef="ngModel" type="text"
+                                            id="BorderNumber" name="BorderNumber" class="form-control"
+                                            [class.error]="socialLinkForm.submitted && BorderNumberkRef.invalid" />
+                                        <span *ngIf="socialLinkForm.submitted && BorderNumberkRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="BorderNumberkRef.errors.required">This field is required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="EnterDate"> {{'DateEnteringKingdom'| translate}}
+                                        </label>
+                                        <div class="input-group">
+                                            <input class="form-control" name="Basic Date Picker"
+                                                [(ngModel)]="EnterDatekVar" ngbDatepicker #EnterDatek="ngbDatepicker">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary feather icon-calendar"
+                                                    (click)="EnterDatek.toggle()" type="button" rippleEffect></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6 ">
+                                        <label class="form-label" for="EntryPort"> {{'EntryPortKingdom'|
+                                            translate}}</label>
+                                        <input [(ngModel)]="EntryPortVar" #EntryPortRef="ngModel" type="text"
+                                            id="EntryPort" name="EntryPort" class="form-control"
+                                            [class.error]="socialLinkForm.submitted && EntryPortRef.invalid" />
+                                        <span *ngIf="socialLinkForm.submitted && EntryPortRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="EntryPortRef.errors.required">This
+                                                field is required!</small>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button (click)="horizontalWizardStepperPrevious()" class="btn btn-primary btn-prev"
+                                        rippleEffect>
+                                        <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                    </button>
+                                    <button (click)="getId()" class="btn btn-primary btn-next" rippleEffect>
+                                        <span class="align-middle d-sm-inline-block d-none">Next</span>
+                                        <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div> -->
+                        <!-- <div id="id-details" class="content">
+                            <form #socialLinkForm="ngForm">
+                                <div class="content-header">
+                                    <h5 class="mb-0">{{'IdDetail'| translate}}</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="selfie">{{'selfiPic'| translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" type="file" ng2FileSelect
+                                                    [uploader]="selfieuploader" id="file-upload-single" />
+                                                <label class="custom-file-label">Choose file</label>
+                                            </div>
+                                            <table class="table" *ngIf="selfieuploader.options.isHTML5">
+                                                <tbody>
+                                                    <tr *ngFor="let item of selfieuploader.queue">
+                                                        <td>
+                                                            <strong>{{ item?.file?.name }}</strong>
+                                                        </td>
+                                                        <td *ngIf="selfieuploader.options.isHTML5" nowrap>
+                                                            Size: {{ item?.file?.size / 1024 / 1024 | number: '.2' }} MB
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label" for="Handprint">{{'UploadCopyPassport'|
+                                            translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" type="file" ng2FileSelect
+                                                    [uploader]="Handprintuploader" id="file-upload-single" />
+                                                <label class="custom-file-label">Choose file</label>
+                                            </div>
+                                            <table class="table" *ngIf="Handprintuploader.options.isHTML5">
+                                                <tbody>
+                                                    <tr *ngFor="let item of Handprintuploader.queue">
+                                                        <td>
+                                                            <strong>{{ item?.file?.name }}</strong>
+                                                        </td>
+                                                        <td *ngIf="Handprintuploader.options.isHTML5" nowrap>
+                                                            Size: {{ item?.file?.size / 1024 / 1024 | number: '.2' }} MB
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6 ">
+                                        <label class="form-label" for="JobNumber">{{'JobNumber'| translate}}</label>
+                                        <input [(ngModel)]="JobNumberVar" #JobNumberRef="ngModel" type="text"
+                                            id="JobNumber" name="JobNumber" class="form-control"
+                                            [class.error]="socialLinkForm.submitted && JobNumberRef.invalid" />
+                                        <span *ngIf="socialLinkForm.submitted && JobNumberRef.invalid"
+                                            class="invalid-form">
+                                            <small class="form-text text-danger"
+                                                *ngIf="JobNumberRef.errors.required">This field is required!</small>
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-6 mt-1">
+                                        <ngx-barcode [bc-value]="4558877" [bc-display-value]="true" bc-width="3"
+                                            bc-height="40"></ngx-barcode>
+                                    </div>
+
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <button (click)="horizontalWizardStepperPrevious()" class="btn btn-primary btn-prev"
+                                        rippleEffect>
+                                        <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
+                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                    </button>
+                                    <button class="btn btn-success btn-submit" (click)="onSubmit()"
+                                        rippleEffect>Submit</button>
+                                </div>
+                            </form>
+                        </div> -->
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!--/ Horizontal Wizard -->
+    </div>
+</div>

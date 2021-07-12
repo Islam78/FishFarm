@@ -1,0 +1,166 @@
+<div class="content-wrapper">
+  <div class="content-body">
+    <!-- content-header component -->
+    <div id="user-profile">
+      <!-- profile header -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card profile-header mb-2">
+            <!-- profile cover photo -->
+            <img *ngIf="currentUser.usercode" class="card-img-top" style="height: 390px;"
+              src="../../../../assets/images/fish (17)1.jpg" alt="User Profile Image" />
+            <img *ngIf="!currentUser.usercode" class="card-img-top" style="height: 390px;"
+              src="../../../../assets/images/fish (7).jpg" alt="User Profile Image" />
+            <!--/ profile cover photo -->
+
+            <div class="position-relative">
+              <!-- profile picture -->
+              <div class="profile-img-container d-flex align-items-center">
+                <div class="profile-img mb-3">
+                  <img [src]="'../../../../assets/images/user1.jpg'" class="rounded img-fluid" alt="Card image" />
+                </div>
+                <!-- profile title -->
+                <div class="profile-title ml-3">
+                  <h2 class="text-white">{{ currentUser.Name }}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="profile-info">
+        <div class="row">
+          <div class="col-lg-3 col-12 order-2 order-lg-1">
+            <!-- about -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="mb-75">About</h5>
+
+                <div class="mt-2">
+                  <h5 class="mb-75">Name:</h5>
+                  <p class="card-text">{{ currentUser.Name }}</p>
+                </div>
+                <!-- if user -->
+                <div class="mt-2" *ngIf="!currentUser.admin_code">
+                  <h5 class="mb-75">address:</h5>
+                  <p class="card-text">{{ currentUser.address }}</p>
+                </div>
+                <!-- if Admin -->
+                <div class="mt-2" *ngIf="currentUser.admin_code">
+                  <h5 class="mb-75">address:</h5>
+                  <p class="card-text">{{ currentUser.Email }}</p>
+                </div>
+                <div class="mt-2">
+                  <h5 class="mb-75">phone:</h5>
+                  <p class="card-text">{{ currentUser.phone }}</p>
+                </div>
+              </div>
+            </div>
+            <!--/ about -->
+          </div>
+          <div class="col-lg-6 col-12 order-1 order-lg-2">
+            <div class="card">
+              <form class="form" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+                <div class="row p-3">
+                  <div class="col-md-12">
+                    <div class="form-contol">
+                      <div class="row">
+                        <!-- If User -->
+                        <div class="col-md-12 col-12" *ngIf="!currentUser.admin_code">
+                          <div class="form-group">
+                            <label for="usercode">{{ "common.id" | translate }}</label>
+                            <input disabled type="text" formControlName="usercode" id="usercode" class="form-control"
+                              [value]="form.value.usercode" />
+                          </div>
+                        </div>
+                        <!-- If Admin -->
+                        <div class="col-md-12 col-12" *ngIf="currentUser.admin_code">
+                          <div class="form-group">
+                            <label for="usercode">{{ "common.id" | translate }}</label>
+                            <input disabled type="text" formControlName="admin_code" id="admin_code"
+                              class="form-control" [value]="form.value.admin_code" />
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                          <div class="form-group">
+                            <label for="Name">{{"common.Name" | translate}}</label>
+                            <input type="text" id="Name" formControlName="Name" class="form-control"
+                              [value]="form.value.Name" />
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                          <div class="form-group">
+                            <label for="Email">{{
+                              "common.Email" | translate
+                              }}</label>
+                            <input type="Email" id="Email" class="form-control" formControlName="Email"
+                              [value]="form.value.Email" />
+                          </div>
+                        </div>
+                        <!-- if User -->
+                        <div class="col-md-12 col-12" *ngIf="!currentUser.admin_code">
+                          <div class="form-group">
+                            <label for="address">{{
+                              "common.address" | translate
+                              }}</label>
+                            <input type="text" id="address" class="form-control" formControlName="address"
+                              [value]="form.value.address" />
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                          <div class="form-group">
+                            <label for="Phone">{{
+                              "common.Phone" | translate
+                              }}</label>
+                            <input type="number" formControlName="phone" class="form-control"
+                              [value]="form.value.phone" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between w-100">
+                    <div></div>
+                    <button type="submit" class="btn btn-gradient-success">
+                      <i class="fas fa-user-edit"></i>
+                      {{ "btn.Edit" | translate }}
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-3 col-12 order-3">
+            <div class="card">
+              <div class="card-body mb-0 pb-0" *ngIf="currentUser?.usercode">
+                <h5 class="mb-1">Farm Bools</h5>
+                <ng-select class="darkTest" [items]="currentUser.Farm_num" required bindLabel="Farm_name"
+                  bindValue="Farm_name" [(ngModel)]="SelectedFarmCode" name="Farm_name" #Farm_name="ngModel">
+                </ng-select>
+              </div>
+              <div class="card-body mt-1 pt-0" *ngIf="!currentUser?.admin_code">
+                <h5 class="mb-1">{{'common.save_time'|translate}}</h5>
+                <input type="number" class="form-control" [(ngModel)]="TimeOfFarmCode" />
+                <hr>
+                <div class="text-right">
+                  <button (click)="UpdateSaveTime()" type="submit" class="btn btn-gradient-success">
+                    <i class="far fa-clock"></i> {{ "btn.Edit" | translate }}
+                  </button>
+                </div>
+              </div>
+
+              <div class="card-body" *ngIf="currentUser?.admin_code">
+                <h5 class="mb-0">Admin</h5>
+                <hr>
+                <div class="row" *ngFor="let item of currentUser?.Farm_num">
+                  <div class="col-12">{{item.Farm_name}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

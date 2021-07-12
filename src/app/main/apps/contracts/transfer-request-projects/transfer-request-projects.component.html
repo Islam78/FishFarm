@@ -1,0 +1,171 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-search></app-search>
+        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{'contracts.TransferRequestProjects' | translate}}</h4>
+                        <button type="button" class="btn btn-info mr-1" (click)="NewDisplayModal = true"
+                            rippleEffect>{{'contracts.DemandeDeTransfert'|translate}}</button>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> {{'common.Name' | translate}}</th>
+                                    <th> {{'common.Email' | translate}} </th>
+                                    <th> {{'common.Date' | translate}} </th>
+                                    <th> {{'common.JobTybe' | translate}} </th>
+                                    <th> {{'common.Action' | translate}} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button type="button" class="btn btn-danger" (click)="showEditModalDialog()"
+                                            rippleEffect>{{'contracts.ExaminerTransfert'|translate}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+        <!-- dialog طلب -->
+        <p-dialog [(visible)]="NewDisplayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'common.SelectEmployee'|translate}}</label>
+                                        <select class="form-control" name="" id="">
+                                            <option value="">islam</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'contracts.ProjectTransferredTo'|translate}}</label>
+                                        <select class="form-control" name="" id="">
+                                            <option value="">القاهره</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'common.Reason'|translate}}</label>
+                                        <textarea class="form-control" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="d-flex">
+                            <div>
+                                <button type="button" (click)="this.editDisplayModal = false"
+                                    class="btn btn-gradient-danger mt-1 text-left">{{'btn.Cancel'|translate}}</button>
+                            </div>
+                            <div class="ml-auto">
+                                <button type="button" (click)="UpdateEmployeeOffices()"
+                                    class="btn btn-gradient-success mt-1">{{'btn.Add'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+
+        <!-- dialog -->
+        <p-dialog [(visible)]="editDisplayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-column">{{'common.EmployeeName'|translate}}</label>
+                                        <input disabled ngModel="اسلام" type="text" id="first-name-column"
+                                            class="form-control" placeholder="اسلام" name="fname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'common.nationality'|translate}}</label>
+                                        <input disabled ngModel="مصري" type="text" id="last-name-column"
+                                            class="form-control" placeholder="مصري" name="lname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city-column">{{'common.RealJob'|translate}}</label>
+                                        <input disabled ngModel="مهندس" type="text" id="city-column"
+                                            class="form-control" placeholder="مهندس" name="city-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">{{'contracts.TransferTimes'|translate}}</label>
+                                        <input disabled ngModel="3" type="text" id="country-floating"
+                                            class="form-control" name="country-floating" placeholder="3" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'contracts.currentProject'|translate}}</label>
+                                        <input disabled ngModel="مصر" type="text" id="company-column"
+                                            class="form-control" name="company-column" placeholder="مصر" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'contracts.ProjectTransferredTo'|translate}}</label>
+                                        <input disabled ngModel="السعودية" type="email" id="email-id-column"
+                                            class="form-control" name="email-id-column" placeholder="السعودية" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="d-flex">
+                            <div>
+                                <button type="button" (click)="this.editDisplayModal = false"
+                                    class="btn btn-gradient-danger mt-1 text-left">{{'btn.Cancel'|translate}}</button>
+                            </div>
+                            <div class="ml-auto">
+                                <button type="button" (click)="this.editDisplayModal = false"
+                                    class="btn btn-gradient-danger mt-1 mr-1">{{'btn.Refuse'|translate}}</button>
+                                <button type="button" (click)="UpdateEmployeeOffices()"
+                                    class="btn btn-gradient-success mt-1">{{'btn.Add'|translate}}</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+</div>

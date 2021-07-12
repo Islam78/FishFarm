@@ -1,0 +1,40 @@
+body {
+  font-family: "Cairo", sans-serif, Montserrat, "Helvetica", "Arial", serif;
+}
+@import "~@ng-select/ng-select/themes/default.theme.css";
+[dir="ltr"] {
+  @import "@core/scss/core.scss";
+  @import "./assets/scss/ltr/form-wizard.min";
+  @import "./assets/scss/styles";
+}
+
+[dir="rtl"] {
+  // Perfect scrollbar
+  @import "~perfect-scrollbar/css/perfect-scrollbar";
+  @import "~node-waves/src/scss/waves.scss";
+  @import "./assets/scss/rtl/bootstrap.min";
+  @import "./assets/scss/rtl/bootstrap-extended.min";
+  @import "./assets/scss/rtl/colors.min";
+  @import "./assets/scss/rtl/components.min";
+  @import "./assets/scss/rtl/dark-layout.min";
+  @import "./assets/scss/rtl/bordered-layout.min";
+  @import "./assets/scss/rtl/semi-dark-layout.min";
+  @import "./assets/scss/rtl/vertical-menu.min";
+  @import "./assets/scss/rtl/dashboard-ecommerce.min";
+  @import "./assets/scss/rtl/chart-apex.min";
+  @import "./assets/scss/rtl/chart-apex.min";
+  @import "./assets/scss/rtl/ext-component-toastr.min";
+  @import "./assets/scss/rtl/form-wizard.min";
+  @import "./assets/scss/rtl/custom-rtl.min";
+}
+
+// when nav close ar
+[dir="rtl"] .navigation li {
+  margin-right: -10px;
+}
+// in dark moode english
+[dir="ltr"] .dark-layout {
+  background: #283046;
+}
+
+

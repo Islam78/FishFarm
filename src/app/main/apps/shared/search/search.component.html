@@ -1,0 +1,32 @@
+<ng-container *ngIf="Show == true">
+    <div id="mdRight" class="content-header-righ">
+        <div class="form-group breadcrum-right">
+            <div ngbDropdown>
+                <button ngbDropdownToggle id="dropdownSettings" rippleEffect (click)="display = true; ShowSidPar()"
+                    label="Show" class="btn-icon btn btn-primary btn-round btn-sm" type="button">
+                    <span [data-feather]="'search'"></span>
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<p-sidebar [(visible)]="display" position="right" [baseZIndex]="10000">
+    <h1 style="font-weight:normal">{{SearchHeader}}</h1>
+    <form class="form" >
+        <div class="row">
+            <div class="col-md-12 col-12" *ngFor="let item of SearchArr">
+                <div class="form-group">
+                    <label for="first-name-column">{{ item.label | translate}}</label>
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <!-- <input type="text" class="form-control" name="fname-column" /> -->
+    </form>
+    <button type="button" class=" btn btn-primary waves-effect waves-float waves-light mr-1" (click)="display = false"
+        icon="search">Search</button>
+    <button type="button" class=" btn btn-danger waves-effect waves-float waves-light mr-1" (click)="display = false"
+        icon="search">Cancel</button>
+</p-sidebar>

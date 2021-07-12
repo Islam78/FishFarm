@@ -1,0 +1,367 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-search></app-search>
+        <!-- <app-content-header [contentHeader]="contentHeader"></app-content-header> -->
+
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">{{'contracts.EndingServices' | translate}}</h4>
+                        <button type="button" style="float: right;" (click)="NewDisplayModal = true"
+                            class="btn btn-gradient-success mt-1">{{'common.Add'|translate}}</button>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> {{'common.Name' | translate}}</th>
+                                    <th> {{'common.OfficesName' | translate}} </th>
+                                    <th> {{'common.Date' | translate}} </th>
+                                    <th> {{'common.JobTybe' | translate}} </th>
+                                    <th> {{'common.Action' | translate}} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td>
+                                        <button (click)="ReviewDialog()" type="button" class="btn btn-primary"
+                                            rippleEffect>{{'common.Review'|translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button (click)="ReviewDialog()" type="button" class="btn btn-primary"
+                                            rippleEffect>{{'common.Review'|translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button (click)="ReviewDialog()" type="button" class="btn btn-primary"
+                                            rippleEffect>{{'common.Review'|translate}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+
+        <!-- dialog طلب -->
+        <p-dialog [(visible)]="NewDisplayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+                        <form class="form">
+                            <div class="row">
+
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'common.SelectEmployee'|translate}}</label>
+                                        <select class="form-control" name="" id="">
+                                            <option value="">islam</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'common.Reason'|translate}}</label>
+                                        <textarea class="form-control" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="DialogBtnRight">
+                            <button type="button" (click)="ReviewDialog()"
+                                class="btn btn-gradient-success mt-1">{{'common.Add'|translate}}</button>
+                        </div>
+                        <div class="DialogBtnLeft">
+                            <button type="button" (click)="this.editDisplayModal = false"
+                                class="btn btn-gradient-danger mt-1 text-left">{{'Close'|translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+        <!-- dialog مراجعه-->
+        <p-dialog [(visible)]="editDisplayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+                        <ul ngbNav #nav="ngbNav" class="nav-tabs">
+                            <li ngbNavItem>
+                                <a ngbNavLink><span
+                                        class="bs-stepper-title">{{'common.EmployeeDetail'|translate}}</span></a>
+                                <ng-template ngbNavContent>
+                                    <form #accountDetailsForm="ngForm">
+                                        <div class="content-header">
+                                            <h5 class="mb-0"> {{'common.EmployeeDetail'| translate}} </h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="username">{{'common.EmployeeName'|translate}}:
+                                                </label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="email">{{'common.nationality'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label"
+                                                    for="password">{{'common.gender'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label"
+                                                    for="confirm-password">{{'common.BirthDate'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label"
+                                                    for="confirm-password">{{'common.JobInvisa'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group form-password-toggle col-md-6">
+                                                <label class="form-label"
+                                                    for="confirm-password">{{'common.RealJob'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </ng-template>
+                            </li>
+                            <li ngbNavItem>
+                                <a ngbNavLink> <span
+                                        class="bs-stepper-title">{{'common.DetailsSalaryAndJob'|translate}}</span></a>
+                                <ng-template ngbNavContent>
+                                    <form #personalInfoForm="ngForm">
+                                        <div class="content-header">
+                                            <h5 class="mb-0">{{'common.DetailsSalaryAndJob'| translate}}
+                                            </h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="first-name">{{'common.JobTybe'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="last-name">{{'common.BasicSalary'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="country">{{'common.SubsistenceAllowance'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="country">{{'common.HousingAllowance'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="country">{{'common.RelocationAllowance'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="country">{{'common.TotalSalary'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </ng-template>
+                            </li>
+                            <li ngbNavItem>
+                                <a href="javascript:void(0)" ngbNavLink> <span
+                                        class="bs-stepper-title">{{'common.PasportDetail'|
+                                        translate}}</span></a>
+                                <ng-template ngbNavContent>
+                                    <form #addressForm="ngForm">
+                                        <div class="content-header">
+                                            <h5 class="mb-0">{{'common.PasportDetail'| translate}}</h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="PassportNumber">
+                                                    {{'common.PassportNumber'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportDate">{{'common.StartDataPassport'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportEndDate">{{'common.EndDataPassport'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportEndDate">{{'common.CopyPassport'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportEndDate">{{'common.PhotoVisa'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="TDvisa_number">{{'common.VisaNumber'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="carrier_company">{{'common.CarrierCompany'|
+                                                    translate}}:
+                                                </label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="travel_date">{{'common.TravelDate'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PassportEndDate">{{'common.PhotoTicket'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </ng-template>
+                            </li>
+                            <li ngbNavItem>
+                                <a ngbNavLink> <span class="bs-stepper-title"> {{'common.uniformDetail'|
+                                        translate}}
+                                    </span></a>
+                                <ng-template ngbNavContent>
+                                    <form #socialLinkForm="ngForm">
+                                        <div class="content-header">
+                                            <h5 class="mb-0"> {{'common.uniformDetail'| translate}}</h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="T_shirtSizeVar">{{'common.TshirtSize'|translate}}:
+                                                </label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label" for="PantsSize">
+                                                    {{'common.PantsSize'|translate}}: </label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="shoeSize">{{'common.ShoeSize'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="form-label"
+                                                    for="PhoneType">{{'common.PhoneType'|translate}}:</label>
+                                                <br>
+                                                <span class="text-secondary">test</span>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </ng-template>
+                            </li>
+                        </ul>
+                        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+                        <div class="d-flex">
+                            <div>
+                                <button type="button" (click)="this.editDisplayModal = false"
+                                    class="btn btn-gradient-danger mt-1 text-left">{{'btn.Cancel'|translate}}</button>
+                            </div>
+                            <div class="ml-auto">
+                                <button type="button" (click)="this.editDisplayModal = false"
+                                    class="btn btn-gradient-danger mt-1 mr-1">{{'btn.Refuse'|translate}}</button>
+                                <button type="button" (click)="ReviewDialog()"
+                                    class="btn btn-gradient-success mt-1">{{'btn.Add'|translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+</div>

@@ -1,0 +1,414 @@
+<div class="content-wrapper">
+    <div class="content-body">
+        <!-- content-header component -->
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <app-search [Show]="true" [SearchArr]="SearchArr" [SearchHeader]="SearchHeader" (click)="MakeSearchArr()">
+        </app-search>
+        <!-- Table Basic -->
+        <div class="row" id="basic-table">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex flex-row-reverse">
+                        <button type="button" class="btn btn-info mr-1" (click)="showReviewModalDialog('')"
+                            rippleEffect>{{'common.Add'|translate}}</button>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> {{'common.Name' | translate}}</th>
+                                    <th> {{'common.OfficeName' | translate}} </th>
+                                    <th> {{'common.Date' | translate}} </th>
+                                    <th> {{'adminOffices.Location' | translate}} </th>
+                                    <th> {{'common.Action' | translate}} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button (click)="showReviewModalDialog('')" type="button"
+                                            class="btn btn-primary mr-2" rippleEffect>{{'adminOffices.Edit' |
+                                            translate}}</button>
+                                        <button (click)="showReviewModalDialog('Show')" type="button"
+                                            class="btn btn-success " rippleEffect>{{'common.Review' |
+                                            translate}}</button>
+                                        <button (click)="DeleteModalDialog()" type="button" class="btn btn-danger ml-2"
+                                            rippleEffect>{{'common.Delete' | translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button (click)="showReviewModalDialog('')" type="button"
+                                            class="btn btn-primary mr-2" rippleEffect>{{'adminOffices.Edit' |
+                                            translate}}</button>
+                                        <button (click)="showReviewModalDialog('Show')" type="button"
+                                            class="btn btn-success " rippleEffect>{{'common.Review' |
+                                            translate}}</button>
+                                        <button (click)="DeleteModalDialog()" type="button" class="btn btn-danger ml-2"
+                                            rippleEffect>{{'common.Delete' | translate}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="font-weight-bold">Islam</span>
+                                    </td>
+                                    <td>Islam@test</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                            test
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-pill badge-light-primary mr-1">sales</span></td>
+                                    <td class="overflow-hidden">
+                                        <button (click)="showReviewModalDialog('')" type="button"
+                                            class="btn btn-primary mr-2" rippleEffect>{{'adminOffices.Edit' |
+                                            translate}}</button>
+                                        <button (click)="showReviewModalDialog('Show');" type="button"
+                                            class="btn btn-success " rippleEffect>{{'common.Review' |
+                                            translate}}</button>
+                                        <button (click)="DeleteModalDialog()" type="button" class="btn btn-danger ml-2"
+                                            rippleEffect>{{'common.Delete' | translate}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Table Basic -->
+        <!-- Review dialog -->
+        <p-dialog [(visible)]="ViewDisplayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-column">{{'adminOffices.OfficeName' |
+                                            translate}}:</label>
+                                        <br>
+                                        <span>test</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'adminOffices.AdminOfficeName' |
+                                            translate}}:</label>
+                                        <br>
+                                        <span>test</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'common.Email' | translate}}:</label>
+                                        <br>
+                                        <span>test</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'common.Password' | translate}}:</label>
+                                        <br>
+                                        <span>test</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'adminOffices.PhoneNumber' |
+                                            translate}}:</label>
+                                        <br>
+                                        <span>test</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city-column">{{'adminOffices.EmployeesNumToWork' |
+                                            translate}}:</label>
+                                        <br>
+                                        <span>test</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">{{'adminOffices.OfficeCategory' |
+                                            translate}}:</label>
+                                        <br>
+                                        <span>test</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.StartDate' | translate}}:</label>
+                                        <br>
+                                        <span>test</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.officeStatus' | translate}}</label>
+                                        <div class="custom-control mt-1  custom-switch custom-control-inline col-12">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch1" />
+                                            <label class="custom-control-label"
+                                                for="customSwitch1">{{'adminOffices.Active' |
+                                                translate}}:</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'adminOffices.Notes' | translate}}:</label>
+                                        <br>
+                                        <span>test</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.CommercialRegister' |
+                                            translate}}:</label>
+                                        <br>
+                                        <a (click)="ViewPhoto = true" class="media-left" href="javascript:void(0)">
+                                            <img src="assets/images/portrait/small/avatar-s-23.jpg"
+                                                alt="Generic placeholder image" height="64" width="64" />
+                                        </a>
+                                        <p-dialog [(visible)]="ViewPhoto" [modal]="true" [style]="{width: '50vw'}"
+                                            [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-contol text-center">
+                                                        <img src="assets/images/portrait/small/avatar-s-23.jpg"
+                                                            alt="Generic placeholder image" height="450" width="550" />
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </p-dialog>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.OfficePhoto' | translate}}:</label>
+                                        <br>
+                                        <a (click)="ViewPhoto = true" class="media-left" href="javascript:void(0)">
+                                            <img src="assets/images/portrait/small/avatar-s-23.jpg"
+                                                alt="Generic placeholder image" height="64" width="64" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.officeOwnerPhoto' |
+                                            translate}}:</label>
+                                        <br>
+                                        <a (click)="ViewPhoto = true" class="media-left" href="javascript:void(0)">
+                                            <img src="assets/images/portrait/small/avatar-s-23.jpg"
+                                                alt="Generic placeholder image" height="64" width="64" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.AddOfficeLicense' |
+                                            translate}}:</label>
+                                        <br>
+                                        <a (click)="ViewPhoto = true" class="media-left" href="javascript:void(0)">
+                                            <img src="assets/images/portrait/small/avatar-s-23.jpg"
+                                                alt="Generic placeholder image" height="64" width="64" />
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                        <div class="DialogBtnRight">
+                            <button type="button" (click)="ViewDisplayModal = false"
+                                class="btn btn-gradient-success mt-1 ">{{'common.Add'|translate}}</button>
+                        </div>
+                        <div class="DialogBtnLeft">
+                            <button type="button" (click)="ViewDisplayModal = false"
+                                class="btn btn-gradient-danger mt-1 text-left">{{'common.Cancel'|translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+        <!-- new and edit dialog -->
+        <p-dialog [(visible)]="ReviewDisplayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+            [draggable]="false" [resizable]="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-contol">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-column">{{'adminOffices.OfficeName' | translate}}</label>
+                                        <input type="text" id="first-name-column" class="form-control"
+                                            name="fname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'adminOffices.AdminOfficeName' |
+                                            translate}}</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            name="lname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'common.Email' | translate}}</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            name="lname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'common.Password' | translate}}</label>
+                                        <input type="password" id="last-name-column" class="form-control"
+                                            name="lname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">{{'adminOffices.PhoneNumber' | translate}}</label>
+                                        <input type="text" id="last-name-column" class="form-control"
+                                            name="lname-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city-column">{{'adminOffices.EmployeesNumToWork' |
+                                            translate}}</label>
+                                        <input type="text" id="city-column" class="form-control" name="city-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">{{'adminOffices.OfficeCategory' |
+                                            translate}}</label>
+                                        <input type="text" id="country-floating" class="form-control"
+                                            name="country-floating" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.StartDate' | translate}}</label>
+                                        <input type="date" id="company-column" class="form-control"
+                                            name="company-column" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.officeStatus' | translate}}</label>
+
+                                        <div class="custom-control custom-switch custom-control-inline col-12">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch1" />
+                                            <label class="custom-control-label"
+                                                for="customSwitch1">{{'adminOffices.Active' |
+                                                translate}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.AddCommercialRegister' |
+                                            translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" ng2FileSelect
+                                                    id="file-upload-single" />
+                                                <label class="custom-file-label">{{'common.SelectFile'|
+                                                    translate}}</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.OfficePhoto' | translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" ng2FileSelect
+                                                    id="file-upload-single" />
+                                                <label class="custom-file-label">{{'common.SelectFile'|
+                                                    translate}}</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.officeOwnerPhoto' |
+                                            translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" ng2FileSelect
+                                                    id="file-upload-single" />
+                                                <label class="custom-file-label">{{'common.SelectFile'|
+                                                    translate}}</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">{{'adminOffices.AddOfficeLicense' |
+                                            translate}}</label>
+                                        <fieldset class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" ng2FileSelect
+                                                    id="file-upload-single" />
+                                                <label class="custom-file-label">{{'common.SelectFile'|
+                                                    translate}}</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">{{'adminOffices.Notes' | translate}}</label>
+                                        <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="DialogBtnRight">
+                            <button type="button" (click)="showReviewModalDialog('')"
+                                class="btn btn-gradient-success mt-1 ">{{'common.Add'|translate}}</button>
+                        </div>
+                        <div class="DialogBtnLeft">
+                            <button type="button" (click)="this.ReviewDisplayModal = false"
+                                class="btn btn-gradient-danger mt-1 text-left">{{'common.Cancel'|translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="myModalLabel1">
+        {{ "btn.Add" | translate }}
+    </h4>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body" tabindex="0" ngbAutofocus>
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+        <div class="row p-3">
+            <div class="col-md-12">
+                <div class="form-contol">
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="usercode">{{ "common.id" | translate }}</label>
+                                <input type="text" formControlName="admincode" id="admincode"
+                                    class="form-control" [value]="form.value.admincode" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="Name">{{"common.Name" | translate}}</label>
+                                <input type="text" id="name" formControlName="name" class="form-control"
+                                    [value]="form.value.name" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="Email">{{
+                                    "common.Email" | translate
+                                    }}</label>
+                                <input type="Email" id="email" class="form-control" formControlName="email"
+                                    [value]="form.value.email" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="password">{{
+                                    "common.Password" | translate
+                                    }}</label>
+                                <input type="password" id="password" class="form-control" formControlName="password"
+                                    [value]="form.value.password" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                            <div class="form-group">
+                                <label for="Phone">{{
+                                    "common.Phone" | translate
+                                    }}</label>
+                                <input type="number" formControlName="phone" class="form-control"
+                                    [value]="form.value.phone" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="d-flex justify-content-between w-100">
+                <button type="submit" class="btn btn-gradient-success ">
+                    <i class="fas fa-plus"></i>
+                    {{ "btn.Add" | translate }}
+                </button>
+                <button type="button" class="btn btn-gradient-secondary ">
+                    <i class="fas fa-window-close"></i>
+                    {{ "btn.Cancel" | translate }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
