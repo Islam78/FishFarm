@@ -71,25 +71,19 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="row text-left">
-              <div class="col-6">
-                <div class="custom-control custom-checkbox col-6">
-                  <input class="custom-control-input" id="admin" type="checkbox"  tabindex="1" value="1"
-                    formControlName="Admintype" />
-                  <label class="custom-control-label" for="admin">Admin</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="custom-control custom-checkbox col-6">
-                  <input class="custom-control-input" id="user" type="checkbox" tabindex="2" value="0"
-                    formControlName="Usertype" />
-                  <label class="custom-control-label" for="user">User</label>
-                </div>
-              </div>
+            <div class="d-flex justify-content-between">
+              <label for="login-password">Type</label>
+            </div>
+            <div class="form-group">
+              <ng-select [ngClass]="{ 'is-invalid error': submitted && f.UserType.errors }" [items]="[
+              {UserType:'Admin', id:'0'},
+              {UserType:'User', id:'1'}
+              ]" ngModel name="UserType" formControlName="UserType" #UserType bindLabel="UserType" bindValue="id"
+                required [class.error]=" !UserType.valid && f.submitted"></ng-select>
             </div>
           </div>
           <button [disabled]="loading" class="btn btn-primary btn-block" tabindex="4" rippleEffect>
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Sign in
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>{{'Sign In'}}
           </button>
         </form>
       </div>

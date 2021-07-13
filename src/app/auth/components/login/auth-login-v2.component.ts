@@ -74,49 +74,71 @@ export class AuthLoginV2Component implements OnInit {
   togglePasswordTextType() {
     this.passwordTextType = !this.passwordTextType;
   }
-  userNotChecked = false
-  adminNotChecked = false
+
+
   onSubmit() {
     this.submitted = true;
+    this.loading = true
+    console.log(this.loginForm.value);
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      this.error = 'Invalid Data';
       return;
     }
+    this._authenticationService
+      .login(this.f.code.value, this.f.password.value, this.f.UserType.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          if (data.error) {
+            this.error = data.error;
+            this.submitted = false;
 
-    if (
-      this.f.Usertype.value == true && this.f.Admintype.value == true ||
-       this.f.Usertype.value == true && this.f.Admintype.value == true || 
-       this.f.Usertype.value == null || this.f.Admintype.value == null 
-       ) {
-      this.error = 'Make Sure To Select User Type';
-      this.loading = false;
-      this.f.Usertype.setValue(false)
-      this.f.Admintype.setValue(false)
+            this.loading = false;
+            return;
+          }
+          window.location.reload()
+        },
+        // error => {
+        //   this.error = error;
+        //   this.loading = false;
+        // }
+      );
 
-    } else {
-      this.f.Admintype.value == true ? this.f.type.setValue(0) : this.f.type.setValue(1)
-      console.log(this.f);
-      // Login
-      // this.loading = true;
-      this._authenticationService
-        .login(this.f.code.value, this.f.password.value, this.f.type.value)
-        .pipe(first())
-        .subscribe(
-          data => {
-            if (data.error) {
-              this.error = data.error;
-              this.loading = false;
-              return;
-            }
-            window.location.reload()
-          },
-          // error => {
-          //   this.error = error;
-          //   this.loading = false;
-          // }
-        );
+    // if (
+    //   this.f.Usertype.value == true && this.f.Admintype.value == true ||
+    //    this.f.Usertype.value == true && this.f.Admintype.value == true || 
+    //    this.f.Usertype.value == null || this.f.Admintype.value == null 
+    //    ) {
+    //   this.error = 'Make Sure To Select User Type';
+    //   this.loading = false;
+    //   this.f.Usertype.setValue(false)
+    //   this.f.Admintype.setValue(false)
 
-    }
+    // } else {
+    //   this.f.Admintype.value == true ? this.f.type.setValue(0) : this.f.type.setValue(1)
+    //   console.log(this.f);
+    //   // Login
+    //   // this.loading = true;
+    //   this._authenticationService
+    //     .login(this.f.code.value, this.f.password.value, this.f.type.value)
+    //     .pipe(first())
+    //     .subscribe(
+    //       data => {
+    //         if (data.error) {
+    //           this.error = data.error;
+    //           this.loading = false;
+    //           return;
+    //         }
+    //         window.location.reload()
+    //       },
+    //       // error => {
+    //       //   this.error = error;
+    //       //   this.loading = false;
+    //       // }
+    //     );
+
+    // }
 
   }
 
@@ -130,9 +152,7 @@ export class AuthLoginV2Component implements OnInit {
     this.loginForm = this._formBuilder.group({
       code: ['islam', [Validators.required]],
       password: ['islam123', Validators.required],
-      Admintype: [],
-      Usertype: [],
-      type: []
+      UserType: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'

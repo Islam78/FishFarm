@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.example.app',
-  appName: 'vuexy-admin-template',
+  appName: 'Fish-Farm',
   webDir: 'dist/vuexy',
   bundledWebRuntime: false
 };
