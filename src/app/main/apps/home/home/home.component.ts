@@ -143,7 +143,7 @@ export class HomeComponent implements OnInit {
     }, 200);
   }
   GetDataUser() {
-    this.http.get(`${environment.apiUrl}get/userhome/suze1`).subscribe((res: any) => {
+    this.http.get(`${environment.apiUrl}get/userhome/${this.currentUser?.Farm_num[0]?.Farm_name}`).subscribe((res: any) => {
       if (res.result.length > 0) {
         this.dataList = res.result
         this.dataList.map(a => {
