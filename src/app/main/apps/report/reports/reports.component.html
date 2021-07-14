@@ -35,8 +35,8 @@
                                             </div>
                                             <div class="col-md-2 col-12 mt-2">
                                                 <button type="submit" class="btn btn-gradient-success">
-                                                    <i class="fas fa-plus"></i>
-                                                    {{ "btn.Save" | translate }}
+                                                    <i class="fas fa-search"></i>
+                                                    {{ "btn.search" | translate }}
                                                 </button>
                                             </div>
                                         </div>
@@ -49,7 +49,7 @@
                         <ngx-skeleton-loader count="5"></ngx-skeleton-loader>
                     </ng-container>
                     <ng-template #elseTemplate>
-                        <div class="row">
+                        <div class="row" *ngIf="dataList?.length > 0">
                             <div class="col-8">
                                 <p-table [responsive]="true" [value]="dataList" [paginator]="true" [rows]="7"
                                     [filterDelay]="true">
@@ -86,7 +86,7 @@
                                                 <span class="PhoneReviwe"></span> {{ product.date | date }}
                                             </td>
                                             <td>
-                                                <span class="PhoneReviwe"></span> {{ product.time |slice : '1' : '5'}}
+                                                <span class="PhoneReviwe"></span> {{ product.Time |slice : '1' : '5'}}
                                             </td>
                                             <td>
                                                 <span class="PhoneReviwe"></span> {{ product.PH_sensor }}
@@ -124,8 +124,17 @@
                                 </div>
                             </div>
                         </div>
+                        <ng-container *ngIf="!(dataList?.length > 0)">
+                            <div class="row text-center py-2">
+                                <div class="col-12">
+                                    <h3 class="text-danger">{{'messages.noData' | translate}}</h3>
+                                </div>
+                            </div>
+                        </ng-container>
                     </ng-template>
                 </div>
+
+
             </div>
         </div>
         <!--/ Table Basic -->

@@ -48,7 +48,7 @@ export class ReportsComponent implements OnInit {
     this.http.post(`${environment.apiUrl}user/reports`, data).subscribe((res: any) => {
       if (res.result.length > 0) {
         this.dataList = res.result
-        this.isLoading = false
+        this.isLoading = false 
         if (res.result[0]) {
           this.PH_sensor = []
           this.Temperature_sensor = []
@@ -62,6 +62,9 @@ export class ReportsComponent implements OnInit {
           this.Temperature_sensor.push(this.Sensors[index].Temperature_sensor)
         }
         this.MakeData();
+      }else{
+        this.isLoading = false 
+
       }
     })
   }

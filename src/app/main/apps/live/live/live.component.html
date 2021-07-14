@@ -32,7 +32,7 @@
                                 </div>
                                 <p> </p>
                                 <p-knob [max]="100" [(ngModel)]="LiveTemp" [strokeWidth]="7" [size]="100"
-                                    [readonly]="true" valueColor="{{LiveTemp >= 50 ? 'red' : 'SlateGray'}}">
+                                    [readonly]="true" valueColor="{{LiveTemp <= 25 ? 'red' : 'SlateGray'}}">
                                 </p-knob>
                                 <hr>
                                 <div class="d-flex justify-content-between order-md-2 order-1">
@@ -40,7 +40,7 @@
                                     <i class="pi pi-heart" style="font-size: 2rem"></i>
                                 </div>
                                 <p-knob [max]="100" [(ngModel)]="LivePh" [strokeWidth]="7" [size]="100"
-                                    [readonly]="true" valueColor="{{LivePh >= 50 ? 'red' : 'SlateGray'}}">
+                                    [readonly]="true" valueColor="{{LivePh <= 6 ? 'red' : 'SlateGray'}}">
                                 </p-knob>
                             </div>
                         </div>

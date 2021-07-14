@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'environments/environment';
+import Swal from 'sweetalert2';
+import { SharedService } from '@core/services/shared.service';
 
 @Component({
   selector: 'app-add-user',
@@ -15,6 +17,8 @@ export class AddUserComponent implements OnInit {
   constructor(public modal: NgbActiveModal, private router: ActivatedRoute,
     private Router: Router,
     private Fb: FormBuilder,
+    public SharedService: SharedService,
+
     private http: HttpClient) {
   }
   ngOnInit() {
@@ -31,15 +35,25 @@ export class AddUserComponent implements OnInit {
         email: [''],
         phone: [''],
         address: [''],
-        save_time: ['']
       }
     )
   }
-
+  close(){
+    this.modal.close()
+  }
   onSubmit(f) {
     console.log("f", f.value);
     this.http.post(`${environment.apiUrl}admin/signupuser`, f.value).subscribe(res => {
-      console.log('admin')
+      this.modal.close()
+      Swal.fire({
+        title: 'Creted Successful.',
+        icon: 'success',
+        customClass: {
+          confirmButton: 'btn btn-success'
+        }
+      });
+      this.SharedService.refreshList.next(true)
+      f.reset()
     })
   }
 

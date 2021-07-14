@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 import { ProfileService } from 'app/main/pages/profile/profile.service';
 import { CoreMenuService } from '@core/components/core-menu/core-menu.service';
@@ -53,17 +54,38 @@ export class ProfileComponent implements OnInit {
     console.log('SelectedFarmCode', this.SelectedFarmCode);
     console.log('TimeOfFarmCode', this.TimeOfFarmCode);
     this.subscrip.add(this.socketSer.timesendMessage(this.currentUser?.usercode, this.SelectedFarmCode, this.TimeOfFarmCode))
+    Swal.fire({
+      icon: 'success',
+      title: 'Updated',
+      customClass: {
+        confirmButton: 'btn btn-success'
+      }
+    })
   }
   onSubmit(f: FormGroup) {
     if (this.currentUser.admin_code) {// if admin
       this.http.put(`${environment.apiUrl}edit/admins`, f.value).subscribe((res: any) => {
         localStorage.setItem('currentUser', JSON.stringify(res.result));
         console.log('admin', res)
+        Swal.fire({
+          icon: 'success',
+          title: 'Updated',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          }
+        })
       })
     } else if (this.currentUser.usercode) { //if user
       this.http.put(`${environment.apiUrl}edit/users`, f.value).subscribe((res: any) => {
         console.log('res', res)
         localStorage.setItem('currentUser', JSON.stringify(res.result));
+        Swal.fire({
+          icon: 'success',
+          title: 'Updated',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          }
+        })
       })
     }
   }

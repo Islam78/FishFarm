@@ -64,15 +64,7 @@
                                     [value]="form.value.phone" />
                             </div>
                         </div>
-                        <div class="col-md-12 col-12">
-                            <div class="form-group">
-                                <label for="save_time">{{
-                                    "common.save_time" | translate
-                                    }}</label>
-                                <input type="number" formControlName="save_time" class="form-control"
-                                    [value]="form.value.save_time" />
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -83,7 +75,7 @@
                     <i class="fas fa-plus"></i>
                     {{ "btn.Add" | translate }}
                 </button>
-                <button type="button" class="btn btn-gradient-secondary ">
+                <button type="button" class="btn btn-gradient-secondary " (click)="close()">
                     <i class="fas fa-window-close"></i>
                     {{ "btn.Cancel" | translate }}
                 </button>

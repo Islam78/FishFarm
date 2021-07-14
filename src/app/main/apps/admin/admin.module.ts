@@ -18,6 +18,7 @@ import { EditAllAdminComponent } from './all-admin/edit-all-admin/edit-all-admin
 import { AddAllAdminComponent } from './all-admin/add-all-admin/add-all-admin.component';
 import { AddUserComponent } from './all-user/add-user/add-user.component';
 import { EditUserComponent } from './all-user/edit-user/edit-user.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import { EditUserComponent } from './all-user/edit-user/edit-user.component';
     SharedModule,
     NgxSkeletonLoaderModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module.forRoot()
+
 
   ]
 })

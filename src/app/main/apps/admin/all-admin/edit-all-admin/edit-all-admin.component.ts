@@ -36,7 +36,9 @@ export class EditAllAdminComponent implements OnInit {
       }
     )
   }
-
+  close(){
+    this.modal.close()
+  }
   onSubmit(f) {
     console.log("f", f.value);
     this.http.put(`${environment.apiUrl}edit/admins`, f.value).subscribe(res => {

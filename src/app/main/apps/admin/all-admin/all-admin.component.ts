@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'environments/environment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-admin',
@@ -47,9 +48,43 @@ export class AllAdminComponent implements OnInit {
     })
   }
   onDelete(code) {
-    this.http.delete(`${environment.apiUrl}delete/admins/${code}`).subscribe(res => {
-      console.log('admin')
-    })
+    var Mythis = this
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      customClass: {
+        confirmButton: 'btn btn-primary',
+        cancelButton: 'btn btn-danger ml-1'
+      }
+    }).then(function (result) {
+      if (result.value) {
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'Your file has been deleted.',
+          icon: 'success',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          }
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire({
+          title: 'Cancelled',
+          text: 'User Delete Cancel :)',
+          icon: 'error',
+          customClass: {
+            confirmButton: 'btn btn-success'
+          }
+        });
+        return;
+      }
+      Mythis.http.delete(`${environment.apiUrl}delete/admins/${code}`).subscribe(res => {
+        console.log('admin')
+        Mythis.isLoading = true
+        Mythis.getData()
+      })
+    });
   }
   getData() {
     this.http.get(`${environment.apiUrl}get/admins`).subscribe(

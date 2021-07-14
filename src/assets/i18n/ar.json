@@ -35,7 +35,15 @@
     "Edit": "تعديل",
     "Delete": "حذف",
     "First": "الاول",
-    "Last": "الاخير"
+    "Last": "الاخير",
+    "search":"بحث"
+
+  },
+  "messages": {
+    "noData": "لا يوجد بيانات",
+    "AreYouSure": "هل انت متاكد؟",
+    "Deleted": "تم الحذف",
+    "minAge": "يجب ان لا يقل العمر عن 20 عام"
   },
   "common": {
     "Congratulations": "تهانينا",
