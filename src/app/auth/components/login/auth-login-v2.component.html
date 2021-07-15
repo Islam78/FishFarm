@@ -42,7 +42,7 @@
           <div class="form-group">
             <label class="form-label" for="login-code">Code</label>
             <input type="text" formControlName="code" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.code.errors }" placeholder="islam" aria-describedby="login-code"
+              [ngClass]="{ 'is-invalid': submitted && f.code.errors }" placeholder="Code" aria-describedby="login-code"
               autofocus="" tabindex="1" />
             <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
               <div *ngIf="f.code.errors.required">code is required</div>
